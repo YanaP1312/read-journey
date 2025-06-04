@@ -1,13 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../helpers/api";
-import axios from "axios";
 import type {
   LoginCredentials,
   RefreshResponse,
   RegisterCredentials,
   User,
 } from "../helpers/types/interfacesAuth";
-import type { RootState } from "../store";
 
 const setAuthHeader = (token: string) =>
   (api.defaults.headers.common.Authorization = `Bearer ${token}`);
@@ -45,7 +43,7 @@ export const login = createAsyncThunk<
 export const refreshTokens = createAsyncThunk<
   RefreshResponse,
   void,
-  { rejectValue: string; state: RootState }
+  { rejectValue: string; state: any }
 >("auth/refreshTokens", async (_, thunkAPI) => {
   const { refreshToken } = thunkAPI.getState().auth.user;
   if (!refreshToken)
@@ -65,7 +63,7 @@ export const refreshTokens = createAsyncThunk<
 export const getCurrentUser = createAsyncThunk<
   User,
   void,
-  { rejectValue: string; state: RootState }
+  { rejectValue: string; state: any }
 >("auth/getCurrentUser", async (_, thunkAPI) => {
   const { token } = thunkAPI.getState().auth.user;
   if (!token) return thunkAPI.rejectWithValue("Token doesn't found");
