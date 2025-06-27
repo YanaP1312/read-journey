@@ -6,15 +6,20 @@ export interface Book {
   totalPages: number;
 }
 
-export interface RecommendedBookItem extends Book {
+export interface RecommendedBook extends Book {
   recommend: boolean;
 }
 
-export interface RecommendedBook {
-  results: RecommendedBookItem[];
+export interface RecommendedBooks {
+  results: RecommendedBook[];
   totalPages: number;
   page: number;
   perPage: number;
+}
+
+export interface RecommendedBooksState extends RecommendedBooks {
+  isLoading: boolean;
+  error: string | null;
 }
 
 export type BookStatus = "unread" | "in-progress" | "done";
@@ -29,15 +34,15 @@ export interface ProgressReport {
   status: ProgressStatus;
 }
 
-export interface OwnBookItem extends Book {
+export interface OwnBook extends Book {
   status: BookStatus;
   owner: string;
   progress?: ProgressReport[];
 }
 
-export type OwnBook = OwnBookItem[];
+export type OwnBooks = OwnBook[];
 
-export interface OwnBookInfo extends OwnBookItem {
+export interface OwnBookInfo extends OwnBook {
   timeLeftToRead: {
     hours: number;
     minutes: number;
@@ -54,4 +59,11 @@ export interface AddBookPayload {
 export interface ReadingPayload {
   id: string;
   page: number;
+}
+
+export interface paramsForRecom {
+  title?: string;
+  author?: string;
+  page: number;
+  limit: number;
 }

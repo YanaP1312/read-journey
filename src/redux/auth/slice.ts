@@ -54,7 +54,7 @@ const authSlice = createSlice({
       .addMatcher(
         isAnyOf(register.rejected, login.rejected, logout.rejected),
         (state, { payload }) => {
-          state.error = payload || "Unknown error";
+          state.error = payload?.message || "Unknown error";
         }
       )
       .addMatcher(
@@ -70,7 +70,7 @@ const authSlice = createSlice({
         (state, { payload }) => {
           state.isRefreshing = false;
           state.isLoggedIn = false;
-          state.error = payload || "Unknown error";
+          state.error = payload?.message ?? "Unknown error";
         }
       ),
 });
