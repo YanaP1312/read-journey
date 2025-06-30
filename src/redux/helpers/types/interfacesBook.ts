@@ -42,6 +42,12 @@ export interface OwnBook extends Book {
 
 export type OwnBooks = OwnBook[];
 
+export interface OwnBooksState {
+  books: OwnBooks;
+  isLoading: boolean;
+  error: string | null;
+}
+
 export interface OwnBookInfo extends OwnBook {
   timeLeftToRead: {
     hours: number;
@@ -53,7 +59,7 @@ export interface OwnBookInfo extends OwnBook {
 export interface AddBookPayload {
   title: string;
   author: string;
-  totalPage: number;
+  totalPages: number;
 }
 
 export interface ReadingPayload {
