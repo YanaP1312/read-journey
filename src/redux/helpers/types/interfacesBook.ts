@@ -17,11 +17,6 @@ export interface RecommendedBooks {
   perPage: number;
 }
 
-export interface RecommendedBooksState extends RecommendedBooks {
-  isLoading: boolean;
-  error: string | null;
-}
-
 export type BookStatus = "unread" | "in-progress" | "done";
 export type ProgressStatus = "active" | "inactive";
 
@@ -42,14 +37,8 @@ export interface OwnBook extends Book {
 
 export type OwnBooks = OwnBook[];
 
-export interface OwnBooksState {
-  books: OwnBooks;
-  isLoading: boolean;
-  error: string | null;
-}
-
 export interface OwnBookInfo extends OwnBook {
-  timeLeftToRead: {
+  timeLeftToRead?: {
     hours: number;
     minutes: number;
     seconds: number;
@@ -72,4 +61,21 @@ export interface paramsForRecom {
   author?: string;
   page: number;
   limit: number;
+}
+
+export interface RecommendedBooksState extends RecommendedBooks {
+  isLoading: boolean;
+  error: string | null;
+}
+
+export interface OwnBooksState {
+  books: OwnBooks;
+  isLoading: boolean;
+  error: string | null;
+}
+
+export interface OwnBookInfoState {
+  book: OwnBookInfo | null;
+  isLoading: boolean;
+  error: string | null;
 }

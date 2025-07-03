@@ -13,6 +13,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import { recommendedBooksReducer } from "./recommendedBooks/slice";
 import { ownBooksReducer } from "./ownBooks/slice";
+import { ownBookInfoReducer } from "./ownBookInfo/slice";
 
 const persistConfig = {
   key: "root",
@@ -28,6 +29,7 @@ export const store = configureStore({
     auth: persistedReducer,
     recommendedBooks: recommendedBooksReducer,
     ownBooks: ownBooksReducer,
+    onwBookInfo: ownBookInfoReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
