@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { RecommendedBooksState } from "../helpers/types/interfacesBook";
 import { getRecommended } from "./operations";
+import { logout } from "../auth/operations";
 
 const initialState: RecommendedBooksState = {
   results: [],
@@ -17,6 +18,9 @@ const recommendedBooksSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
+      .addCase(logout.fulfilled, () => {
+        return initialState;
+      })
       .addCase(getRecommended.pending, (state) => {
         state.isLoading = true;
         state.error = null;

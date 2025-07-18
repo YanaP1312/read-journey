@@ -6,6 +6,7 @@ import {
   readingFinish,
   readingStart,
 } from "./operations";
+import { logout } from "../auth/operations";
 
 const initialState: OwnBookInfoState = {
   book: null,
@@ -19,6 +20,9 @@ const ownBookInfoSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
+      .addCase(logout.fulfilled, () => {
+        return initialState;
+      })
       .addMatcher(
         isAnyOf(
           getOwnBookInfo.pending,

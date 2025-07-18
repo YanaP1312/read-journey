@@ -6,6 +6,7 @@ import {
   deleteOwnBook,
   getOwnBooks,
 } from "./operations";
+import { logout } from "../auth/operations";
 
 const initialState: OwnBooksState = {
   books: [],
@@ -19,6 +20,9 @@ const ownBooksSlice = createSlice({
   reducers: {},
   extraReducers: (builder) =>
     builder
+      .addCase(logout.fulfilled, () => {
+        return initialState;
+      })
       .addCase(getOwnBooks.fulfilled, (state, { payload }) => {
         state.books = payload;
       })
