@@ -1,13 +1,11 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import HeroBlock from "../../components/HeroBlock/HeroBlock";
+import FormBlock from "../../components/FormBlock/FormBlock/FormBlock";
 
 const MainPage = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isRegister = location.pathname === "/register";
-
   return (
     <div>
-      <h3>Main page</h3>
+      <FormBlock />
+      <HeroBlock />
     </div>
   );
 };
