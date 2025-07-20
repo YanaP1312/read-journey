@@ -10,16 +10,13 @@ export const getRecommended = createAsyncThunk<
   RecommendedBooks,
   paramsForRecom,
   { rejectValue: { message: string; status: number } }
->(
-  "recommendedBooks/getRecommended",
-  async ({ limit = 9, ...rest }, thunkAPI) => {
-    try {
-      const { data } = await api.get<RecommendedBooks>("books/recommend", {
-        params: { limit, ...rest },
-      });
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(handleAxiosError(error));
-    }
+>("recommendedBooks/getRecommended", async (params, thunkAPI) => {
+  try {
+    const { data } = await api.get<RecommendedBooks>("books/recommend", {
+      params,
+    });
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(handleAxiosError(error));
   }
-);
+});

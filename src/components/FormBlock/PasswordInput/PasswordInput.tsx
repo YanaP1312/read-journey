@@ -21,7 +21,7 @@ const PasswordInput = ({ registration, error }: PasswordInputProps) => {
           {...registration}
         />
         <button onClick={togglePassword}>
-          <svg>
+          <svg width="20" height="20">
             <use
               href={
                 showPassword

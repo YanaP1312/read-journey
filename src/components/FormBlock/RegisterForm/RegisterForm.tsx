@@ -26,7 +26,7 @@ const RegisterForm = () => {
     if (register.fulfilled.match(resultAction)) {
       reset();
       navigate("/recommended");
-    } else toast.error(`⛔ ${backendError}`);
+    } else toast.error(backendError);
   };
 
   return (

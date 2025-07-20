@@ -13,7 +13,7 @@ const FormBlock = () => {
         <svg width="42" height="17">
           <use href="../../../../public/sprite.svg#icon-favicon"></use>
         </svg>
-        <p>READ JOURNEY</p>
+        <span>READ JOURNEY</span>
       </div>
       <h1>
         Expand your mind, reading&nbsp;<span>a book</span>

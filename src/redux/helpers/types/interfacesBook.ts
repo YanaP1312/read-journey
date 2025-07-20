@@ -59,8 +59,8 @@ export interface ReadingPayload {
 export interface paramsForRecom {
   title?: string;
   author?: string;
-  page: number;
-  limit: number;
+  page?: number;
+  limit?: number;
 }
 
 export interface RecommendedBooksState extends RecommendedBooks {

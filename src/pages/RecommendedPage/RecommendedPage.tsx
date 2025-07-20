@@ -1,5 +1,11 @@
+import RecommendedBooks from "../../components/RecommendedBooks/RecommendedBooks";
+
 const RecommendedPage = () => {
-  return <div>RecommendedPage</div>;
+  return (
+    <main>
+      <RecommendedBooks />
+    </main>
+  );
 };
 
 export default RecommendedPage;
