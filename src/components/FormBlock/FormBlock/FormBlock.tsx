@@ -4,10 +4,8 @@ import LoginForm from "../LoginForm/LoginForm";
 
 const FormBlock = () => {
   const location = useLocation();
-  // const navigate = useNavigate();
-  const isRegister = location.pathname === "/register";
 
-  // const handleSwitch = () => navigate(isRegister ? "/login" : "/register");
+  const isRegister = location.pathname === "/register";
 
   return (
     <div>
