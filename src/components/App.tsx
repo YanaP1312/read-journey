@@ -8,6 +8,8 @@ import RestrictedRoute from "./RestrictedRoute";
 import Layout from "./Layuot";
 import PrivateRoute from "./PrivateRoute";
 import LazyWrapper from "../redux/helpers/utils/LazyWrapper";
+import { store } from "../redux/store";
+import Loader from "./Loader/Loader";
 
 const MainPage = lazy(() => import("../pages/MainPage/MainPage"));
 const RecommendedPage = lazy(
@@ -23,10 +25,13 @@ function App() {
   const isRefreshing = useAppSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(getCurrentUser());
+    const token = store.getState().auth.user.token;
+    if (token) dispatch(getCurrentUser());
   }, [dispatch]);
 
-  return isRefreshing ? null : (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Routes>
       <Route
         path="/register"

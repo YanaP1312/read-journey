@@ -1,7 +1,7 @@
 import { selectUser } from "../../../redux/auth/selectors";
 import { useAppSelector } from "../../../redux/helpers/hooks";
 
-const UserInfo = () => {
+const UserBar = () => {
   const nameUser = useAppSelector(selectUser);
 
   return (
@@ -14,4 +14,4 @@ const UserInfo = () => {
   );
 };
 
-export default UserInfo;
+export default UserBar;

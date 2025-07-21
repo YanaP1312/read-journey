@@ -5,7 +5,7 @@ const buildLinkClass = ({ isActive }: { isActive: boolean }) => {
   return clsx("nav-link", { active: isActive });
 };
 
-const Navigation = () => {
+const UserNav = () => {
   return (
     <nav>
       <NavLink to="/recommended" className={buildLinkClass}>
@@ -18,4 +18,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default UserNav;

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/helpers/hooks";
 import { getRecommended } from "../../redux/recommendedBooks/operations";
 import {
@@ -8,12 +8,15 @@ import {
 } from "../../redux/recommendedBooks/selectors";
 import { SlArrowLeftCircle } from "react-icons/sl";
 import { SlArrowRightCircle } from "react-icons/sl";
+import type { Book } from "../../redux/helpers/types/interfacesBook";
+import ModalAddToLibrary from "../Modals/ModalAddToLibrary/ModalAddToLibrary";
 
 const RecommendedBooks = () => {
   const dispatch = useAppDispatch();
   const recomBooks = useAppSelector(selectResult);
   const recomBookPage = useAppSelector(selectPage);
   const totalPages = useAppSelector(selectTotalPages);
+  const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
   const handleMorePage = () =>
     dispatch(getRecommended({ page: recomBookPage + 1 }));
@@ -40,18 +43,19 @@ const RecommendedBooks = () => {
       </div>
       <ul>
         {recomBooks.map((book) => (
-          <li key={book._id}>
+          <li key={book._id} onClick={() => setSelectedBook(book)}>
             <img
               src={book.imageUrl}
               width="137"
               height="208"
-              alt="Book cover"
+              alt={`Book cover - ${book.title}`}
             />
-            <h3>{book.title}</h3>
+            <h4>{book.title}</h4>
             <p>{book.author}</p>
           </li>
         ))}
       </ul>
+      {selectedBook && <ModalAddToLibrary book={ selectedBook} onClose={() => setSelectedBook(null)} />}
     </section>
   );
 };

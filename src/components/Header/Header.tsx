@@ -1,21 +1,23 @@
 import { Link } from "react-router-dom";
-import UserInfo from "./UserInfo/UserInfo";
-import Navigation from "./Navigation/Navigation";
 import LogOutBtn from "./LogOutBtn/LogOutBtn";
 import { BsListNested } from "react-icons/bs";
 import MobMenu from "./MobMenu/MobMenu";
 import { useEffect, useState } from "react";
+import UserBar from "./UserBar/UserBar";
+import UserNav from "./UserNav/UserNav";
 
 const Header = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    
-    useEffect(() => {
-        const handleEsc = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') setIsOpen(false);
-        }
-        document.addEventListener("keydown", handleEsc);
-        return ()=>{document.removeEventListener('keydown', handleEsc)}
-    }, [])
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    document.addEventListener("keydown", handleEsc);
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+    };
+  }, []);
 
   return (
     <header>
@@ -25,13 +27,13 @@ const Header = () => {
         </svg>
         <span>READ JOURNEY</span>
       </Link>
-      <Navigation />
-      <UserInfo />
+      <UserNav />
+      <UserBar />
       <LogOutBtn />
       <button type="button" onClick={() => setIsOpen(true)}>
         <BsListNested />
       </button>
-          {isOpen && <MobMenu onClose={() => setIsOpen(false) } />}
+      {isOpen && <MobMenu onClose={() => setIsOpen(false)} />}
     </header>
   );
 };
