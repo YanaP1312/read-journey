@@ -1,11 +1,9 @@
-// const initialState: OwnBooksState = {
-//   books: [],
-//   isLoading: false,
-//   error: null,
-// };
-
 import type { RootState } from "../store";
 
-export const selectBooks = (state: RootState) => state.ownBooks.books;
+export const selectAllBooks = (state: RootState) => state.ownBooks.allBooks;
+export const selectFilteredBooks = (state: RootState) =>
+  state.ownBooks.filteredBooks;
+export const selectCurrentStatus = (state: RootState) =>
+  state.ownBooks.currentStatus;
 export const selectIsLoading = (state: RootState) => state.ownBooks.isLoading;
 export const selectError = (state: RootState) => state.ownBooks.error;

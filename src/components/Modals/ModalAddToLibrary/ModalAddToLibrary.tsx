@@ -4,7 +4,7 @@ import type { Book } from "../../../redux/helpers/types/interfacesBook";
 import { addBookFromRecom } from "../../../redux/ownBooks/operations";
 import Modal from "../Modal";
 import {
-  selectBooks,
+  selectAllBooks,
   selectError,
   selectIsLoading,
 } from "../../../redux/ownBooks/selectors";
@@ -19,7 +19,7 @@ const ModalAddToLibrary = ({ onClose, book }: ModalAddToLibraryProps) => {
   const dispatch = useAppDispatch();
   const error = useAppSelector(selectError);
   const isLoading = useAppSelector(selectIsLoading);
-  const ownBooks = useAppSelector(selectBooks);
+  const ownBooks = useAppSelector(selectAllBooks);
 
   const handleAddBook = async () => {
     const isDuplicate = ownBooks.some(

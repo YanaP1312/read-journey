@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { useAppDispatch, useAppSelector } from "../redux/helpers/hooks";
-import { selectIsRefreshing } from "../redux/auth/selectors";
+import { selectIsLoggedIn, selectIsRefreshing } from "../redux/auth/selectors";
 import { lazy, useEffect } from "react";
 import { getCurrentUser } from "../redux/auth/operations";
 import RestrictedRoute from "./RestrictedRoute";
@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import LazyWrapper from "../redux/helpers/utils/LazyWrapper";
 import { store } from "../redux/store";
 import Loader from "./Loader/Loader";
+import { getOwnBooks } from "../redux/ownBooks/operations";
 
 const MainPage = lazy(() => import("../pages/MainPage/MainPage"));
 const RecommendedPage = lazy(
@@ -23,11 +24,18 @@ const ReadingPage = lazy(() => import("../pages/ReadingPage/ReadingPage"));
 function App() {
   const dispatch = useAppDispatch();
   const isRefreshing = useAppSelector(selectIsRefreshing);
+  const isLoggedIn = useAppSelector(selectIsLoggedIn);
 
   useEffect(() => {
     const token = store.getState().auth.user.token;
     if (token) dispatch(getCurrentUser());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(getOwnBooks());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return isRefreshing ? (
     <Loader />

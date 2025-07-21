@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/helpers/hooks";
-import { selectBooks, selectError } from "../../redux/ownBooks/selectors";
+import {
+  selectAllBooks,
+  selectCurrentStatus,
+  selectError,
+  selectFilteredBooks,
+} from "../../redux/ownBooks/selectors";
 import { FaRegTrashAlt } from "react-icons/fa";
 import type {
   Book,
   BookStatus,
 } from "../../redux/helpers/types/interfacesBook";
 import ModalDetailIfo from "../Modals/ModalDetailInfoBook/ModalDetailInfoBook";
-import { deleteOwnBook, getOwnBooks } from "../../redux/ownBooks/operations";
+import { deleteOwnBook } from "../../redux/ownBooks/operations";
 import { toast } from "react-toastify";
 import Select from "react-select";
+import { setFilterStatus } from "../../redux/ownBooks/slice";
 
 const options: { value: BookStatus | undefined; label: string }[] = [
   { value: undefined, label: "All books" },
@@ -20,16 +26,10 @@ const options: { value: BookStatus | undefined; label: string }[] = [
 
 const MyLibraryBooks = () => {
   const dispatch = useAppDispatch();
-  const ownBooks = useAppSelector(selectBooks);
+  const filteredBook = useAppSelector(selectFilteredBooks);
+  const currentStatus = useAppSelector(selectCurrentStatus);
   const error = useAppSelector(selectError);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
-  const [filterStatus, setFilterStatus] = useState<BookStatus | undefined>(
-    undefined
-  );
-
-  useEffect(() => {
-    dispatch(getOwnBooks(filterStatus));
-  }, [dispatch, filterStatus]);
 
   const handleDeleteBook = async (id: string) => {
     const result = await dispatch(deleteOwnBook(id));
@@ -45,10 +45,13 @@ const MyLibraryBooks = () => {
       <h2>My library</h2>
       <Select
         options={options}
-        defaultValue={options[0]}
-        onChange={(selectedOption) => setFilterStatus(selectedOption?.value)}
+        // defaultValue={options[0]}
+        value={options.find((opt) => opt.value === currentStatus)}
+        onChange={(selectedOption) =>
+          dispatch(setFilterStatus(selectedOption?.value))
+        }
       />
-      {ownBooks.length === 0 ? (
+      {filteredBook.length === 0 ? (
         <div>
           <div>
             <picture>
@@ -75,7 +78,7 @@ const MyLibraryBooks = () => {
         </div>
       ) : (
         <ul>
-          {ownBooks.map((book) => (
+          {filteredBook.map((book) => (
             <li key={book._id}>
               <img
                 src={book.imageUrl}

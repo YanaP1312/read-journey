@@ -9,7 +9,9 @@ import {
 import { logout } from "../auth/operations";
 
 const initialState: OwnBooksState = {
-  books: [],
+  allBooks: [],
+  filteredBooks: [],
+  currentStatus: undefined,
   isLoading: false,
   error: null,
 };
@@ -17,23 +19,33 @@ const initialState: OwnBooksState = {
 const ownBooksSlice = createSlice({
   name: "ownBooks",
   initialState,
-  reducers: {},
+  reducers: {
+    setFilterStatus: (state, { payload }) => {
+      state.filteredBooks = payload
+        ? state.allBooks.filter((book) => book.status === payload)
+        : state.allBooks;
+      state.currentStatus = payload;
+    },
+  },
   extraReducers: (builder) =>
     builder
       .addCase(logout.fulfilled, () => {
         return initialState;
       })
       .addCase(getOwnBooks.fulfilled, (state, { payload }) => {
-        state.books = payload;
+        state.allBooks = payload;
+        state.filteredBooks = payload;
       })
       .addCase(addOwnBook.fulfilled, (state, { payload }) => {
-        state.books.push(payload);
+        state.allBooks.push(payload);
       })
       .addCase(addBookFromRecom.fulfilled, (state, { payload }) => {
-        state.books.push(payload);
+        state.allBooks.push(payload);
       })
       .addCase(deleteOwnBook.fulfilled, (state, { payload }) => {
-        state.books = state.books.filter((book) => book._id !== payload.id);
+        state.allBooks = state.allBooks.filter(
+          (book) => book._id !== payload.id
+        );
       })
       .addMatcher(
         isAnyOf(
@@ -74,3 +86,4 @@ const ownBooksSlice = createSlice({
 });
 
 export const ownBooksReducer = ownBooksSlice.reducer;
+export const { setFilterStatus } = ownBooksSlice.actions;

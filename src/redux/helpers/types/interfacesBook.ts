@@ -69,7 +69,9 @@ export interface RecommendedBooksState extends RecommendedBooks {
 }
 
 export interface OwnBooksState {
-  books: OwnBooks;
+  allBooks: OwnBooks;
+  filteredBooks: OwnBooks;
+  currentStatus: BookStatus | undefined;
   isLoading: boolean;
   error: string | null;
 }
