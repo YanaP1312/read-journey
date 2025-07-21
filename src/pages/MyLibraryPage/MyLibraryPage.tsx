@@ -1,5 +1,11 @@
+import MyLibraryBooks from "../../components/MyLibraryBooks/MyLibraryBooks";
+
 const MyLibraryPage = () => {
-  return <div>MyLibraryPage</div>;
+  return (
+    <div>
+      <MyLibraryBooks />
+    </div>
+  );
 };
 
 export default MyLibraryPage;
