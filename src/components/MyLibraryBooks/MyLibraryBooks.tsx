@@ -45,7 +45,6 @@ const MyLibraryBooks = () => {
       <h2>My library</h2>
       <Select
         options={options}
-        // defaultValue={options[0]}
         value={options.find((opt) => opt.value === currentStatus)}
         onChange={(selectedOption) =>
           dispatch(setFilterStatus(selectedOption?.value))

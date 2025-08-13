@@ -1,7 +1,12 @@
-const Dashboard = () => {
+interface DashboardProps {
+  children: React.ReactNode;
+}
+
+const Dashboard = ({ children }: DashboardProps) => {
   return (
     <div>
-      <h3>I'm Dashboard</h3>
+      <div>{children}</div>
+      <div>{children}</div>
     </div>
   );
 };

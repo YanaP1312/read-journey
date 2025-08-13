@@ -1,5 +1,7 @@
+import MyBook from "../../"
+
 const ReadingPage = () => {
-  return <div>ReadingPage</div>;
+  return <div><MyBook/></div>;
 };
 
 export default ReadingPage;
