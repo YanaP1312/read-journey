@@ -4,10 +4,9 @@ interface DashboardProps {
 
 const Dashboard = ({ children }: DashboardProps) => {
   return (
-    <div>
-      <div>{children}</div>
-      <div>{children}</div>
-    </div>
+    <aside>
+      {children}
+    </aside>
   );
 };
 

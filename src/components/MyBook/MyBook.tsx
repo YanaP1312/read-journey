@@ -5,7 +5,7 @@ const MyBook = () => {
 
     const book = useAppSelector(selectBook);
 
-    const lastProgress = book.progress?.at(-1);
+    const lastProgress = book?.progress?.at(-1);
     const isReading = lastProgress?.status === "active";
 
 

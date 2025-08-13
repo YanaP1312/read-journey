@@ -1,6 +1,9 @@
+import { toast } from "react-toastify";
+import { useAppDispatch } from "../../../redux/helpers/hooks";
 import type { Book } from "../../../redux/helpers/types/interfacesBook";
 import Modal from "../Modal";
 import { useNavigate } from "react-router-dom";
+import { getOwnBookInfo } from "../../../redux/ownBookInfo/operations";
 
 interface ModalDetailIfoProps {
   book: Book;
@@ -9,10 +12,13 @@ interface ModalDetailIfoProps {
 
 const ModalDetailIfo = ({ onClose, book }: ModalDetailIfoProps) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
-  const handleStartBook = () => {
+  const handleStartBook = async () => {
+    try{
+      await dispatch(getOwnBookInfo(book._id)).unwrap();
     onClose();
-    navigate("/reading");
+    navigate("/reading");} catch(error){toast.error}
   };
 
   return (
