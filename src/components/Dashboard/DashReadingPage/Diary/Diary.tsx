@@ -1,8 +1,8 @@
-import { deleteReadingBook } from "../../../redux/ownBookInfo/operations";
-import type { DiaryProps } from "../../../redux/helpers/types/interfacesDashboard";
-import { useAppDispatch } from "../../../redux/helpers/hooks";
+import { deleteReadingBook } from "../../../../redux/ownBookInfo/operations";
+import type { DiaryProps } from "../../../../redux/helpers/types/interfacesDashboard";
+import { useAppDispatch } from "../../../../redux/helpers/hooks";
 import ReadingDayBlock from "./ReadingDayBlock";
-import type { ProgressReport } from "../../../redux/helpers/types/interfacesBook";
+import type { ProgressReport } from "../../../../redux/helpers/types/interfacesBook";
 
 const Diary = ({ progress = [], totalPages, bookId }: DiaryProps) => {
   const dispatch = useAppDispatch();

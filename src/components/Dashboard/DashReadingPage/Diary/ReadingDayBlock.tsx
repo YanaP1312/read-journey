@@ -1,4 +1,4 @@
-import type { ProgressReport } from "../../../redux/helpers/types/interfacesBook";
+import type { ProgressReport } from "../../../../redux/helpers/types/interfacesBook";
 import ReadingSessionCard from "./ReadingSessionCard";
 
 const ReadingDayBlock = ({

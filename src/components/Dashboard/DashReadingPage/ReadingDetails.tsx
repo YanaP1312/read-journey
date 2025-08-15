@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useAppSelector } from "../../redux/helpers/hooks";
-import { selectBook } from "../../redux/ownBookInfo/selectors";
+import { useAppSelector } from "../../../redux/helpers/hooks";
+import { selectBook } from "../../../redux/ownBookInfo/selectors";
 import Diary from "./Diary/Diary";
-import Statistics from "./Statistics/Statistics";
+import Statistics from "./Statistics";
 
 const ReadingDetails = () => {
 

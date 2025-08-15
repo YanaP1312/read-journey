@@ -3,10 +3,10 @@ import FormBlock from "../../components/FormBlock/FormBlock/FormBlock";
 
 const MainPage = () => {
   return (
-    <div>
+    <main>
       <FormBlock />
       <HeroBlock />
-    </div>
+    </main>
   );
 };
 export default MainPage;

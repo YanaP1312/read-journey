@@ -10,15 +10,15 @@ const ModalStartReading = ({onClose}: ModalStartReadingProps) => {
             <div>
             <picture>
               <source
-                srcSet="../../../public/images/books-dt@2x.png 2x, ../../../public/images/books-dt.png 1x"
+                srcSet="/images/books-dt@2x.png 2x, /images/books-dt.png 1x"
                 media="(min-width: 768px)"
               />
               <source
-                srcSet="../../../public/images/books-mob@2x.png 2x, ../../../public/images/books-mob.png 1x"
+                srcSet="/images/books-mob@2x.png 2x, /images/books-mob.png 1x"
                 media="(max-width:767px)"
               />
               <img
-                src="../../../public/images/books-dt.png"
+                src="/images/books-dt.png"
                 width="70"
                 height="50"
                 alt="books"

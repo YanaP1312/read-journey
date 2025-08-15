@@ -51,9 +51,11 @@ const onSubmit = async({page}: FormValues) => {
     return (
         <section>
         <form onSubmit={handleSubmit(onSubmit)}>
-            <label htmlFor="page">{isReading? "Stop page" : "Start page"}</label>
-            <div><p>Page number:</p>
-            <input id='page' type="number" {...register("page")}/></div>
+            <h4>{isReading? "Stop page" : "Start page"}</h4>
+            <div>
+            <label htmlFor="page">Page number:</label>
+            <input id='page' type="number" {...register("page")}/>
+            </div>
             {errors.page && <p>{errors.page.message}</p>}
             
             <button type="submit" disabled={isSubmitting}>
