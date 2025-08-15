@@ -1,0 +1,70 @@
+import { useState } from "react";
+import ModalStartReading from "../../Modals/ModalStartReading/ModalStartReading";
+import { useAppDispatch, useAppSelector } from "../../../redux/helpers/hooks";
+import { selectBook } from "../../../redux/ownBookInfo/selectors";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { readingSchema } from "../../../redux/helpers/schemas/dashboardFormsSchemas";
+import { toast } from "react-toastify";
+import { readingFinish, readingStart } from "../../../redux/ownBookInfo/operations";
+
+interface FormValues {
+    page: number;
+}
+
+
+const AddReading = () => {
+const [isOpenModal, setIsOpenModal] = useState(false);
+const dispatch = useAppDispatch();
+const book = useAppSelector(selectBook);
+const lastProgress = book?.progress?.at(-1);
+const isReading = lastProgress?.status === "active";
+
+
+const {
+    register, handleSubmit, formState: {errors, isSubmitting}, reset,
+} = useForm<FormValues>({resolver: yupResolver(readingSchema)});
+
+const onSubmit = async({page}: FormValues) => {
+    if (!book?._id) {
+        toast.error("Book not found");
+        return;
+      }
+    const payload = {id: book._id, page};
+
+    try {
+        if(isReading){
+            await dispatch(readingFinish(payload)).unwrap();
+            toast.success("Reading stopped")
+            if(page === book?.totalPages){
+                setIsOpenModal(true);
+            }
+        } else{await dispatch(readingStart(payload)).unwrap();
+        toast.success("Reading started")}
+        reset();
+    }catch(error: any){
+        toast.error(error.message || "Request error");
+        
+    }
+}
+
+    return (
+        <section>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="page">{isReading? "Stop page" : "Start page"}</label>
+            <div><p>Page number:</p>
+            <input id='page' type="number" {...register("page")}/></div>
+            {errors.page && <p>{errors.page.message}</p>}
+            
+            <button type="submit" disabled={isSubmitting}>
+{isReading? "To stop" : "To start"}
+            </button>
+
+        </form>
+        {isOpenModal && <ModalStartReading onClose={() => setIsOpenModal(false)}/>}
+        </section>
+    )
+
+}
+
+export default AddReading;

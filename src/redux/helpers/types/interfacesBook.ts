@@ -27,6 +27,7 @@ export interface ProgressReport {
   finishReading?: string;
   speed?: number;
   status: ProgressStatus;
+  _id: string;
 }
 
 export interface OwnBook extends Book {
