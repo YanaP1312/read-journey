@@ -1,0 +1,42 @@
+$breakpoints: (
+  "sm": 375px,
+  "md": 768px,
+  "lg": 1280px,
+);
+
+$colors: (
+  "background": #141414,
+  "background-accent": #1F1F1F,
+  "background-input": #262626,
+  "input-label": #686868,
+  "text-span": rgba(227, 227, 227, 0.5),
+  "text-primary": #F9F9F9,
+  "accent": #4F92F7,
+  "success": #30B94D,
+  "wrong": #e90516,
+  "transparent": transparent,
+  "current": currentColor,
+);
+
+
+$main-font: "Glory";
+
+$font-weights: (
+  "Regular": 400,
+  "SemiBold": 600,
+);
+
+$font-sizes: (
+    "xs": 10px,
+  "sm": 14px,
+  "md": 16px,
+  "lg": 18px,
+  "xl": 20px,
+  "2xl": 28px,
+  "3xl": 64px, 
+);
+
+// $easings: (
+//   "fast": 300ms ease,
+//   "slow": 600ms ease,
+// );

@@ -7,6 +7,7 @@ import { persistor, store } from "./redux/store.ts";
 import { ToastContainer } from "react-toastify";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
+import "./scss/main.scss"
 
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
