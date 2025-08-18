@@ -1,0 +1,155 @@
+@use "sass:map";
+@use "variables" as var;
+@use "functions" as fn;
+
+@mixin mobile {
+    @media (max-width: #{map-get(var.$breakpoints, "md") - 1px}) {
+      @content;
+    }
+  }
+  
+  @mixin tablet {
+    @media (min-width: map-get(var.$breakpoints, "md")) and (max-width: #{map-get(var.$breakpoints, "lg") - 1px}) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @media (min-width: map-get(var.$breakpoints, "lg")) {
+      @content;
+    }
+  }
+  
+
+
+  @mixin container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  
+    @include mobile {
+      padding: 20px;
+    }
+  
+    @include tablet {
+      padding: 32px;
+      max-width: map-get(var.$breakpoints, "md");
+    }
+  
+    @include desktop {
+        padding: 32px;
+      max-width: map-get(var.$breakpoints, "lg");
+    }
+  }
+
+  @mixin adaptive-font($mobile, $tablet, $desktop) {
+    font-size: $mobile;
+  
+    @include tablet {
+      font-size: $tablet;
+    }
+  
+    @include desktop {
+      font-size: $desktop;
+    }
+  }
+  
+  @mixin main-title {
+    @include adaptive-font(32px, 64px, 64px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  
+    @include tablet {
+      line-height: 0.94;
+    }
+  }
+  
+  @mixin main-text {
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: 0.02em;
+    color: fn.get-color("text-primary");
+  }
+  
+  @mixin link-text {
+    @include adaptive-font(12px, 14px, 14px);
+    text-decoration: underline;
+    color: fn.get-color("input-label");
+  
+    &:hover {
+      color: fn.get-color("text-primary");
+    }
+  }
+  
+  @mixin form-input {
+    @include adaptive-font(12px, 14px, 14px);
+    font-weight: 500;
+    line-height: 1.33;
+    letter-spacing: -0.02em;
+    border-radius: 12px;
+    width: 100%;
+    padding: 14px;
+    background: fn.get-color("background-input");
+  
+    &:hover {
+      border: 1px solid fn.get-color("input-label");
+    }
+  
+    @include tablet {
+      line-height: 1.29;
+      padding: 16px;
+    }
+  }
+  
+  @mixin common-btn {
+    @include adaptive-font(14px, 16px, 16px);
+    border: 1px solid fn.get-color("input-label");
+    border-radius: 30px;
+    padding: 10px 20px;
+    background-color: fn.get-color("transparent");
+    color: fn.get-color("text-primary");
+    font-weight: 700;
+    line-height: 1.29;
+    letter-spacing: 0.02em;
+  
+    &:hover {
+      color: fn.get-color("background-accent");
+      background: fn.get-color("text-primary");
+    }
+  
+    @include tablet {
+      line-height: 1.13;
+      padding: 12px 28px;
+    }
+  }
+  
+  @mixin main-btn {
+    @include adaptive-font(14px, 20px, 20px);
+    border-radius: 30px;
+    padding: 12px 29px;
+    color: fn.get-color("background-accent");
+    background: fn.get-color("text-primary");
+    font-weight: 700;
+    line-height: 1.28571;
+    letter-spacing: 0.02em;
+  
+    &:hover {
+      background-color: fn.get-color("transparent");
+      border: 1px solid fn.get-color("input-label");
+      color: fn.get-color("text-primary");
+    }
+  
+    @include tablet {
+      line-height: 1;
+      padding: 16px 54px;
+    }
+  }
+  
+  
+
+  @mixin ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
