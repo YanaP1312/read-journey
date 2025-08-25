@@ -30,24 +30,31 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="form-com">
+      <div className="inputs-block">
       <div>
-        <label htmlFor="name">Name:</label>
-        <input id="name" type="text" {...formRegister("name")} />
-        {errors.name && <span>{errors.name.message}</span>}
+        <div className="input-wrap">
+        <label htmlFor="name" className="input-wrap-label">Name:</label>
+        <input id="name" type="text" {...formRegister("name")} placeholder="Ilona Ratushniak" className="input-wrap-name"/>
+        </div>
+        {errors.name && <span className="input-wrap-error">{errors.name.message}</span>}
       </div>
       <div>
-        <label htmlFor="email">Mail:</label>
-        <input id="email" type="email" {...formRegister("email")} />
-        {errors.email && <span>{errors.email.message}</span>}
+        <div className="input-wrap">
+        <label htmlFor="email" className="input-wrap-label">Mail:</label>
+        <input id="email" type="email" {...formRegister("email")} placeholder="Your@email.com" className="input-wrap-mail"/>
+        </div>
+        {errors.email && <span className="input-wrap-error">{errors.email.message}</span>}
       </div>
       <PasswordInput
         registration={formRegister("password")}
         error={errors.password}
       />
-
-      <button type="submit">Registration</button>
-      <Link to="/login">Already have an account?</Link>
+      </div>
+<div className="btms-block">
+      <button className="btms-block-btn" type="submit">Registration</button>
+      <Link to="/login" className="btms-block-link">Already have an account?</Link>
+      </div>
     </form>
   );
 };

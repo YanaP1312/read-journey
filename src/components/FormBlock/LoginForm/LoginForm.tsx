@@ -30,19 +30,24 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="form-com" >
+      <div className="inputs-block">
       <div>
-        <label htmlFor="email">Mail:</label>
-        <input id="email" type="email" {...formRegister("email")} />
-        {errors.email && <span>{errors.email.message}</span>}
+      <div className="input-wrap">
+        <label htmlFor="email" className="input-wrap-label" >Mail:</label>
+        <input id="email" type="email" {...formRegister("email")} placeholder="Your@email.com" className="input-wrap-mail" />
+        </div>
+        {errors.email && <span className="input-wrap-error">{errors.email.message}</span>}
       </div>
       <PasswordInput
         registration={formRegister("password")}
         error={errors.password}
       />
-
-      <button type="submit">Log In</button>
-      <Link to="/register">Don’t have an account? </Link>
+</div>
+<div className="btms-block">
+      <button type="submit" className="btms-block-btn">Log In</button>
+      <Link to="/register" className="btms-block-link">Don’t have an account? </Link>
+      </div>
     </form>
   );
 };

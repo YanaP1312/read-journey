@@ -1,0 +1,215 @@
+@use "../utils/functions" as fn;
+@use "../utils//mixins" as mx;
+@use "../utils/variables" as var;
+
+/* styles for mob header */
+.overlay{
+    position: fixed;
+    top: 0;
+  left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99999;
+    background-color: rgba(20, 20, 20, 0.6);
+
+}
+
+.mobMenu{
+    position: absolute; 
+  top: 0;
+  right: 0;
+  height: 100vh;
+    width: 50%;
+    background: fn.get-color("background-input");
+    padding: 34px 40px;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.btnClose{
+    cursor: pointer;
+    margin-left: auto;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+
+
+
+/* styles for common header */
+
+.header{
+    @include mx.frame;
+    @include mx.disFlex;
+    
+    position: relative;
+
+    justify-content: space-between;
+    border-radius: 15px;
+    padding: 11px 20px;
+    margin-bottom: 10px;
+
+
+    @include mx.tablet{
+        padding: 16px;
+    margin-bottom: 16px;
+    justify-content: initial;
+    }
+
+
+}
+
+
+
+.wrapNav{
+    display: none;
+
+    @include mx.tablet{
+        display: flex;
+        margin-left: 223px;
+    }
+
+    @include mx.desktop{
+        margin-left: 334px;
+    }
+
+}
+
+.nav-link {
+    @include mx.main-text;
+
+    font-weight: 500;
+line-height: 1.125;
+letter-spacing: -0.02em;
+    color: fn.get-color("input-label");
+    position: relative;
+    transition: color 0.3s ease;
+  
+    &.active {
+      color: fn.get-color("text-primary");
+  
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: fn.get-color("accent");
+        border-radius: 8px;
+      }
+    }
+  }
+  
+
+.wrapUserBar{
+    @include mx.disFlex;
+
+    gap: 10px;
+
+    @include mx.tablet{
+        gap: 16px;
+        margin-left: auto
+        
+    }
+}
+
+.headerNav{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+
+    @include mx.tablet{
+        flex-direction: row;
+        gap: 32px;
+    }
+
+    @include mx.desktop{
+        gap: 40px;
+    }
+}
+
+.userBar{
+    @include mx.disFlex;
+    gap: 8px;
+
+    
+
+    &Round{
+        @include mx.disFlexFull;
+
+        border: 1px solid fn.get-color("input-label");
+        border-radius: 100%;
+        background-color: fn.get-color("background-input");
+        width: 35px;
+        height: 35px;
+
+        @include mx.tablet{
+            width: 42px;
+        height: 42px; 
+        }
+    }
+
+    &Name{
+display: none;
+
+@include mx.desktop{
+    display: block;
+}
+    }
+}
+
+.wrapLogOutBtn{
+    display: none;
+
+    @include mx.tablet{
+        display: flex;
+    }
+
+}
+
+
+
+.burgerBtn{
+    @include mx.disFlexFull;
+
+    width: 28px;
+    height: 28px;
+
+    @include mx.tablet {
+        display: none;
+    }
+}
+
+.logoWrapHeader{
+    @include mx.disFlex;
+
+    gap: 4px;
+}
+
+.logoNameHeader{
+    display: none;
+
+    @include mx.desktop {
+    display: inline;
+    font-size: fn.get-font-size("xl");
+     }
+}
+
+.logOutBtn{
+    @include mx.common-btn;
+    padding: 10px 20px;
+
+    @include mx.tablet{
+    padding: 12px 28px;}
+}

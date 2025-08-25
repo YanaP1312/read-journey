@@ -16,10 +16,10 @@ const MobMenu = ({ onClose }: { onClose: () => void }) => {
   }, []);
 
   return (
-    <div onClick={handleBackdropClick}>
-      <div>
-        <button type="button" onClick={onClose}>
-          <RxCross2 />
+    <div onClick={handleBackdropClick} className="overlay">
+      <div className="mobMenu">
+        <button type="button" onClick={onClose} className="btnClose">
+          <RxCross2 size={26}  />
         </button>
         <UserNav />
         <LogOutBtn />

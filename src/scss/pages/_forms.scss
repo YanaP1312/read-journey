@@ -1,0 +1,112 @@
+@use "../utils/functions" as fn;
+@use "../utils//mixins" as mx;
+@use "../utils/variables" as var;
+
+/* styles for main page's forms */
+
+.form-com{
+    display: flex;
+    flex-direction: column;
+    
+    justify-content: space-between;
+    gap: 72px;
+
+    @include mx.tablet{
+        gap: 82px;
+    };
+
+    @include mx.desktop{
+        gap: 146px;
+    };
+}
+
+.inputs-block{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include mx.tablet{
+        top: 14px;
+    };
+}
+
+.input-wrap{
+   position: relative;
+   @include mx.form-input;
+ 
+
+   &-label{
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    color: fn.get-color("input-label");
+
+    @include mx.tablet{
+        top: 16px;
+    };
+   }
+
+
+   &-error{
+    padding-left: 14px;
+    color: fn.get-color("wrong")
+   }
+
+   &-name{
+    padding-left: 42px;
+    width: 100%;
+
+    @include mx.tablet{
+        padding-left: 46px;
+    };
+   }
+
+   &-mail{
+    padding-left: 32px;
+    width: 100%;
+    
+
+    @include mx.tablet{
+        padding-left: 36px;
+    };
+   }
+
+   &-password{
+    padding-left: 60px;
+    padding-right: 32px;
+    width: 100%;
+
+    @include mx.tablet{
+        padding-left: 70px;
+    };
+   
+}
+
+&-passwordIcon{
+    position: absolute;
+    right: 14px;
+    top: 14px;
+
+    @include mx.tablet{
+        top: 16px;
+    };
+}
+
+}
+
+.btms-block{
+    display: flex;
+    gap: 14px;
+   align-items: center;
+
+    &-btn{
+        @include mx.main-btn;
+    }
+
+    &-link{
+        @include mx.link-text;
+    }
+
+}
+
+

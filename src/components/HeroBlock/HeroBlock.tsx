@@ -1,6 +1,6 @@
 const HeroBlock = () => {
   return (
-    <div>
+    <section className="wrapImgBlock" >
       <picture>
         <source
           srcSet="../../../public/images/iPhone15-dt@2x.png 2x, ../../../public/images/iPhone15-dt.png 1x"
@@ -14,10 +14,9 @@ const HeroBlock = () => {
           src="../../../public/images/iPhone15-dt.png"
           alt="iPhone15 with Recommended page"
           width="405"
-          height="656"
         />
       </picture>
-    </div>
+    </section>
   );
 };
 

@@ -1,0 +1,102 @@
+@use "../utils/mixins" as mx;
+@use "../utils/functions" as fn;
+@use "../utils/variables" as var;
+
+.main{
+    display: grid;
+    gap: 10px;
+    padding: 20px;
+    justify-content: center;
+
+    @include mx.tablet {
+gap: 0;
+padding: 40px 64px;
+    }
+
+    @include mx.desktop {
+        gap: 16px;
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+/* styles for form block */
+
+.wrapFormBlock{
+    @include mx.frame;
+    padding: 20px 20px 40px;
+    width: 335px;
+
+   
+
+    @include mx.tablet {
+        padding: 40px 64px;
+        width: 704px;
+    }
+
+    @include mx.desktop {
+        padding: 40px 64px;
+        width: 600px;
+    }
+}
+
+.logo-wrap{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 40px;
+
+    @include mx.tablet {
+        margin-bottom: 157px;
+    }
+
+    @include mx.desktop {
+        margin-bottom: 107px;
+    }
+}
+
+.logoName{
+    display: none;
+
+    @include mx.tablet {
+    display: inline;
+    font-size: fn.get-font-size("xl");
+     }
+}
+
+.main-title{
+    @include mx.main-title;
+    margin-bottom: 20px;
+
+    @include mx.tablet{
+       
+        margin-bottom: 40px;
+    }
+
+
+&-span {
+    color: fn.get-color(
+        "text-span")
+}
+}
+
+/* styles for img block */
+
+.wrapImgBlock{
+    @include mx.frame;
+    padding: 20px 40px 0;
+    width: 335px;
+
+
+    @include mx.tablet {
+       display: none;
+    }
+
+    @include mx.desktop {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        width: 600px;
+}
+}

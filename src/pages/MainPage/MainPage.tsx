@@ -3,7 +3,7 @@ import FormBlock from "../../components/FormBlock/FormBlock/FormBlock";
 
 const MainPage = () => {
   return (
-    <main>
+    <main className="main">
       <FormBlock />
       <HeroBlock />
     </main>

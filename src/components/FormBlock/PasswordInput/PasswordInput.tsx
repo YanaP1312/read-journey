@@ -13,15 +13,16 @@ const PasswordInput = ({ registration, error }: PasswordInputProps) => {
 
   return (
     <div>
-      <div>
-        <label htmlFor="password">Password:</label>
+      <div className="input-wrap">
+        <label htmlFor="password" className="input-wrap-label">Password:</label>
         <input
           id="password"
+          placeholder="Yourpasswordhere"
           type={showPassword ? "text" : "password"}
           {...registration}
-        />
-        <button onClick={togglePassword}>
-          <svg width="20" height="20">
+          className="input-wrap-password"/>
+        <button onClick={togglePassword} className="input-wrap-passwordIcon">
+          <svg width="18" height="18">
             <use
               href={
                 showPassword
@@ -32,7 +33,7 @@ const PasswordInput = ({ registration, error }: PasswordInputProps) => {
           </svg>
         </button>
       </div>
-      {error && <span>{error.message}</span>}
+      {error && <span className="input-wrap-error">{error.message}</span>}
     </div>
   );
 };

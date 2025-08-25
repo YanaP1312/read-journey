@@ -9,7 +9,7 @@
   }
   
   @mixin tablet {
-    @media (min-width: map-get(var.$breakpoints, "md")) and (max-width: #{map-get(var.$breakpoints, "lg") - 1px}) {
+    @media (min-width: map-get(var.$breakpoints, "md")) {
       @content;
     }
   }
@@ -29,6 +29,7 @@
   
     @include mobile {
       padding: 20px;
+      max-width: map-get(var.$breakpoints, "sm");
     }
   
     @include tablet {
@@ -53,6 +54,19 @@
       font-size: $desktop;
     }
   }
+
+  @mixin adaptive-padding($mobile, $tablet, $desktop) {
+    padding: $mobile;
+  
+    @include tablet {
+      padding: $tablet;
+    }
+  
+    @include desktop {
+      padding: $desktop;
+    }
+  }
+  
   
   @mixin main-title {
     @include adaptive-font(32px, 64px, 64px);
@@ -66,14 +80,14 @@
   }
   
   @mixin main-text {
-    font-size: 14px;
+    @include adaptive-font(14px, 16px, 16px);
     line-height: 1.29;
     letter-spacing: 0.02em;
     color: fn.get-color("text-primary");
   }
   
   @mixin link-text {
-    @include adaptive-font(12px, 14px, 14px);
+    @include adaptive-font(11px, 14px, 14px);
     text-decoration: underline;
     color: fn.get-color("input-label");
   
@@ -91,6 +105,7 @@
     width: 100%;
     padding: 14px;
     background: fn.get-color("background-input");
+    border: 1px solid fn.get-color("transparent");
   
     &:hover {
       border: 1px solid fn.get-color("input-label");
@@ -104,6 +119,7 @@
   
   @mixin common-btn {
     @include adaptive-font(14px, 16px, 16px);
+
     border: 1px solid fn.get-color("input-label");
     border-radius: 30px;
     padding: 10px 20px;
@@ -116,6 +132,7 @@
     &:hover {
       color: fn.get-color("background-accent");
       background: fn.get-color("text-primary");
+      border: 1px solid fn.get-color("transparent");
     }
   
     @include tablet {
@@ -133,6 +150,7 @@
     font-weight: 700;
     line-height: 1.28571;
     letter-spacing: 0.02em;
+    border: 1px solid fn.get-color("transparent");
   
     &:hover {
       background-color: fn.get-color("transparent");
@@ -145,8 +163,23 @@
       padding: 16px 54px;
     }
   }
-  
-  
+
+  @mixin frame{
+    border-radius: 30px;
+    background-color: fn.get-color("background-accent");
+  }
+
+  @mixin disFlex{
+    display: flex;
+    align-items: center;
+  }
+
+  @mixin disFlexFull{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 
   @mixin ellipsis {
     overflow: hidden;

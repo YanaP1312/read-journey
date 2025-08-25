@@ -20,19 +20,30 @@ const Header = () => {
   }, []);
 
   return (
-    <header>
-      <Link to="/recommended">
+    <header className="header">
+      <Link to="/recommended" className="logoWrapHeader">
         <svg width="42" height="17">
           <use href="../../../public/sprite.svg#icon-favicon" />
         </svg>
-        <span>READ JOURNEY</span>
+        <span className="logoNameHeader">READ JOURNEY</span>
       </Link>
-      <UserNav />
+
+      
+      <div className="wrapNav">
+      <UserNav/>
+      </div>
+
+      <div className="wrapUserBar">
       <UserBar />
+      <div className="wrapLogOutBtn">
       <LogOutBtn />
-      <button type="button" onClick={() => setIsOpen(true)}>
-        <BsListNested />
+      </div>
+      
+      <button type="button" onClick={() => setIsOpen(true)} className="burgerBtn">
+        <BsListNested size={26}/>
       </button>
+      </div>
+    
       {isOpen && <MobMenu onClose={() => setIsOpen(false)} />}
     </header>
   );

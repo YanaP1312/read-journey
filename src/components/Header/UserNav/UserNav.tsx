@@ -7,7 +7,7 @@ const buildLinkClass = ({ isActive }: { isActive: boolean }) => {
 
 const UserNav = () => {
   return (
-    <nav>
+    <nav className="headerNav">
       <NavLink to="/recommended" className={buildLinkClass}>
         Home
       </NavLink>

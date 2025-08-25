@@ -6,11 +6,11 @@
 }
 
 @function get-font-size($key) {
-    @return map-get($font-sizes, $key);
+    @return map-get(var.$font-sizes, $key);
   }
   
 @function get-font-weight($key) {
-    @return map-get($font-weights, $key);
+    @return map-get(var.$font-weights, $key);
   }
   
 

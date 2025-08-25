@@ -5,11 +5,11 @@ const UserBar = () => {
   const nameUser = useAppSelector(selectUser);
 
   return (
-    <div>
-      <div>
+    <div className="userBar">
+      <div className="userBarRound">
         <p>{nameUser.name?.charAt(0).toUpperCase()}</p>
       </div>
-      <p>{nameUser.name}</p>
+      <p className="userBarName">{nameUser.name}</p>
     </div>
   );
 };
