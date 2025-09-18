@@ -10,7 +10,7 @@ const ReadingPage = () => {
 const book = useAppSelector(selectBook)
 const hasProgress = (book?.progress ?? []).length > 0
 
-  return <main>
+  return <main className="dashboardMain">
     <Dashboard>
       <AddReading/>
       {hasProgress?  <ReadingDetails/> : <Progress/> }

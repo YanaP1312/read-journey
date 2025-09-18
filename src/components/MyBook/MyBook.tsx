@@ -9,7 +9,7 @@ const MyBook = () => {
     const isReading = lastProgress?.status === "active";
 
 
-    return <section>
+    return <section className="primary">
         <h2>My reading</h2>
         <div>
         <img

@@ -1,0 +1,18 @@
+@use "../utils/functions" as fn;
+@use "../utils//mixins" as mx;
+@use "../utils/variables" as var;
+
+
+.primary{
+    @include mx.frame; 
+
+    padding: 40px 20px 20px;
+
+    @include mx.tablet{
+        padding: 40px; 
+    }
+
+    @include mx.desktop{
+        padding: 40px 20px 20px;
+    }
+}

@@ -5,7 +5,7 @@ import MyLibraryBooks from "../../components/MyLibraryBooks/MyLibraryBooks";
 
 const MyLibraryPage = () => {
   return (
-    <main>
+    <main className="dashboardMain">
       <Dashboard>
         <AddBook/>
         <Recommended/>

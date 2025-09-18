@@ -4,7 +4,7 @@ interface DashboardProps {
 
 const Dashboard = ({ children }: DashboardProps) => {
   return (
-    <aside>
+    <aside className="aside">
       {children}
     </aside>
   );

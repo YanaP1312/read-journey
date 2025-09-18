@@ -28,7 +28,7 @@ const RecommendedBooks = () => {
   }, [dispatch, recomBookPage]);
 
   return (
-    <section>
+    <section className="primary">
       <h2>Recommended</h2>
       <div>
         <button onClick={handleLessPage} disabled={recomBookPage === 1}>

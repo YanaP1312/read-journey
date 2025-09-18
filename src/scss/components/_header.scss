@@ -43,8 +43,6 @@
 }
 
 
-
-
 /* styles for common header */
 
 .header{
@@ -69,7 +67,7 @@
 }
 
 
-
+/* navigation */
 .wrapNav{
     display: none;
 
@@ -81,8 +79,23 @@
     @include mx.desktop{
         margin-left: 334px;
     }
-
 }
+
+.headerNav{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include mx.tablet{
+        flex-direction: row;
+        gap: 32px;
+    }
+
+    @include mx.desktop{
+        gap: 40px;
+    }
+}
+
 
 .nav-link {
     @include mx.main-text;
@@ -111,6 +124,8 @@ letter-spacing: -0.02em;
   }
   
 
+  /* user bar */
+
 .wrapUserBar{
     @include mx.disFlex;
 
@@ -123,27 +138,9 @@ letter-spacing: -0.02em;
     }
 }
 
-.headerNav{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-
-    @include mx.tablet{
-        flex-direction: row;
-        gap: 32px;
-    }
-
-    @include mx.desktop{
-        gap: 40px;
-    }
-}
-
 .userBar{
     @include mx.disFlex;
     gap: 8px;
-
-    
 
     &Round{
         @include mx.disFlexFull;

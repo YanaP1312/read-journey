@@ -40,7 +40,7 @@ const MyLibraryBooks = () => {
   };
 
   return (
-    <section>
+    <section className="primary">
       <h2>My library</h2>
       <Select
         options={options}
