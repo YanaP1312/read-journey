@@ -32,18 +32,26 @@ const onSubmit = async (values: AddBookPayload) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <h4 className="dashTitleForm">Create your library:</h4>
 
-            <div><label htmlFor="title">Book title:</label><input id="title" type="text" {...register("title")} /></div>
-            {errors.title && <p>{errors.title.message}</p>}
+<div className="dashInputs">
+    <div>
+            <div className="dashInputsWrap"><label htmlFor="title" className="dashInputsWrapLabel">Book title:</label><input id="title" type="text" placeholder="Enter text" className="dashInputsWrapTitle" 
+            {...register("title")} /></div>
+            {errors.title && <span className="dashInputsWrapError">{errors.title.message}</span>}
+            </div>
             
+<div>
+            <div className="dashInputsWrap"><label htmlFor="author" className="dashInputsWrapLabel" >The author:</label><input id="author" type="text" placeholder="Enter text" className="dashInputsWrapAuthor" {...register("author")} /></div>
+            {errors.author && <span className="dashInputsWrapError">{errors.author.message}</span>}
+            </div>
 
-            <div><label htmlFor="author">The author:</label><input id="author" type="text" {...register("author")} /></div>
-            {errors.author && <p>{errors.author.message}</p>}
+<div>
+            <div className="dashInputsWrap"><label htmlFor="totalPages" className="dashInputsWrapLabel">Number of pages:</label><input id="totalPages" type="number" placeholder="0" className="dashInputsWrapNumber" {...register("totalPages")}/></div>
+            {errors.totalPages && <span className="dashInputsWrapError">{errors.totalPages.message}</span>}
+            </div>
+            </div>
 
-            <div><label htmlFor="totalPages">Number of pages:</label><input id="totalPages" type="number" {...register("totalPages")}/></div>
-            {errors.totalPages && <p>{errors.totalPages.message}</p>}
 
-
-            <button type="submit" disabled={isSubmitting}>Add book</button>
+            <button type="submit" disabled={isSubmitting} className="dashBtm">Add book</button>
             
 
         </form>

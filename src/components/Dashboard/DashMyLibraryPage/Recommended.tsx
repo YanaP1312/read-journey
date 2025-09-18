@@ -12,18 +12,21 @@ const Recommended = () => {
         dispatch(getRecommended({ limit: 3 }));
       }, [dispatch]);
 
-    return <section>
-        <h3>Recommended books</h3>
-        <ul>{books?.map(book => (<li key={book._id}>
+    return <section className="dashBlockFrame">
+        <h3 className="dashTitle">Recommended books</h3>
+        <ul className="dashReccomList">{books?.map(book => (<li key={book._id}>
+        
         <img
               src={book.imageUrl}
               width="71"
               height="107"
               alt={`Book cover - ${book.title}`}
+              className="dashReccomImg"
             />
-            <h4>{book.title}</h4>
-            <p>{book.author}</p></li>))}</ul>
-        <Link to="/recommended">Home <IoArrowForward /></Link>
+            <div className="dashReccomWrap">
+            <h4 className="dashReccomTitle">{book.title}</h4>
+            <p className="dashReccomAuthor">{book.author}</p></div></li>))}</ul>
+        <Link to="/recommended" className="workOutLinkWrap"><p className="workOutLink">Home</p> <IoArrowForward className="workOutArrow" /></Link>
 
     </section>
 
