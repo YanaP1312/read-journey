@@ -26,21 +26,24 @@ const Filters = () => {
   return (
     <section>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h4>Filters:</h4>
-
-        <div>
-          <label htmlFor="title">Book title:</label>
-          <input id="title" {...register("title")} placeholder="Enter text" />
+        <h4 className="dashTitleForm">Filters:</h4>
+        <div className="dashInputs">
+<div>
+        <div className="dashInputsWrap">
+          <label htmlFor="title" className="dashInputsWrapLabel">Book title:</label>
+          <input id="title" {...register("title")} placeholder="Enter text" className="dashInputsWrapTitle" />
         </div>
-        {errors.title && <p>{errors.title.message}</p>}
-
-        <div>
-          <label htmlFor="author">The author:</label>
-          <input id="author" {...register("author")} placeholder="Enter text" />
+        {errors.title && <span className="dashInputsWrapError">{errors.title.message}</span>}
         </div>
-        {errors.author && <p>{errors.author.message}</p>}
-
-        <button type="submit" disabled={isSubmitting}>
+<div>
+        <div className="dashInputsWrap">
+          <label htmlFor="author" className="dashInputsWrapLabel">The author:</label>
+          <input id="author" {...register("author")} placeholder="Enter text" className="dashInputsWrapAuthor"/>
+        </div>
+        {errors.author && <span className="dashInputsWrapError">{errors.author.message}</span>}
+        </div>
+</div>
+        <button type="submit" disabled={isSubmitting} className="dashBtm">
           To apply
         </button>
       </form>

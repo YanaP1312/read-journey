@@ -39,6 +39,7 @@
     position: absolute;
     left: 14px;
     top: 14px;
+    bottom: 14px;
     color: fn.get-color("input-label");
 
     @include mx.tablet{
@@ -86,9 +87,11 @@
     position: absolute;
     right: 14px;
     top: 14px;
+    bottom: 14px;
 
     @include mx.tablet{
         top: 16px;
+        bottom: 16px;
     };
 }
 

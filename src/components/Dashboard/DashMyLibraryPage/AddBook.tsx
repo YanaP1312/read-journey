@@ -30,7 +30,7 @@ const onSubmit = async (values: AddBookPayload) => {
 
     return <section>
         <form onSubmit={handleSubmit(onSubmit)}>
-            <h4>Create your library:</h4>
+            <h4 className="dashTitleForm">Create your library:</h4>
 
             <div><label htmlFor="title">Book title:</label><input id="title" type="text" {...register("title")} /></div>
             {errors.title && <p>{errors.title.message}</p>}

@@ -8,7 +8,7 @@ import RecommendedBooks from "../../components/RecommendedBooks/RecommendedBooks
 const RecommendedPage = () => {
   return (
     <main className="dashboardMain">
-      <Dashboard>
+      <Dashboard>     
         <Filters/>
         <WorkOut/>
         <Quote/>

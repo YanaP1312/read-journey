@@ -1,5 +1,5 @@
 const Quote = () => {
-return (<section>
+return (<section className="dashQuote">
     <img
   src="/images/books-dt.png"
   srcSet="/images/books-dt@2x.png 2x"
@@ -7,7 +7,7 @@ return (<section>
   height="40"
   alt="books"
 />
-    <p>"Books are <span>windows</span> to the world, and reading is a journey into the unknown."</p>
+    <p>"Books are <span className="dashQuoteSpan">windows</span> to the world, and reading is a journey into the unknown."</p>
 </section>)
 }
 

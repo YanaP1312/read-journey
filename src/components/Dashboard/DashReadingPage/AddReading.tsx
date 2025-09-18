@@ -51,7 +51,7 @@ const onSubmit = async({page}: FormValues) => {
     return (
         <section>
         <form onSubmit={handleSubmit(onSubmit)}>
-            <h4>{isReading? "Stop page" : "Start page"}</h4>
+            <h4 className="dashTitleForm">{isReading? "Stop page" : "Start page"}</h4>
             <div>
             <label htmlFor="page">Page number:</label>
             <input id='page' type="number" {...register("page")}/>
