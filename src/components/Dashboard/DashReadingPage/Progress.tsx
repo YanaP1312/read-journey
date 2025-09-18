@@ -1,10 +1,10 @@
 const Progress = () => {
     return(
-<section>
-    <h3>Progress</h3>
-    <p>Here you will see when and how much you read. 
+<section className="dashProgFrame">
+    <h3 className="dashTitle">Progress</h3>
+    <p className="dashProgTitle">Here you will see when and how much you read. 
 To record, click on the red button above.</p>
-<div>
+<div className="dashProgWrap">
             <picture>
               <source
                 srcSet="../../../public/images/star-dt@2x.png 2x, ../../../public/images/star-dt.png 1x"

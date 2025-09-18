@@ -53,12 +53,15 @@ const onSubmit = async({page}: FormValues) => {
         <form onSubmit={handleSubmit(onSubmit)}>
             <h4 className="dashTitleForm">{isReading? "Stop page" : "Start page"}</h4>
             <div>
-            <label htmlFor="page">Page number:</label>
-            <input id='page' type="number" {...register("page")}/>
+            <div className="dashInputsWrap">
+            <label  className="dashInputsWrapLabel" htmlFor="page">Page number:</label>
+            <input id='page' type="number" {...register("page")} placeholder="0" className="dashInputsWrapPage"/>
             </div>
-            {errors.page && <p>{errors.page.message}</p>}
+            {errors.page && <span className="dashInputsWrapError">{errors.page.message}</span>}
+            </div>
             
-            <button type="submit" disabled={isSubmitting}>
+            <button 
+            className="dashBtm" type="submit" disabled={isSubmitting}>
 {isReading? "To stop" : "To start"}
             </button>
 

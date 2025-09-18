@@ -23,7 +23,7 @@ const Header = () => {
     <header className="header">
       <Link to="/recommended" className="logoWrapHeader">
         <svg width="42" height="17">
-          <use href="../../../public/sprite.svg#icon-favicon" />
+          <use href="/sprite.svg#icon-favicon" />
         </svg>
         <span className="logoNameHeader">READ JOURNEY</span>
       </Link>

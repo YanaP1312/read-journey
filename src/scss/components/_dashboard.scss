@@ -16,6 +16,7 @@
 
     @include mx.desktop{
         grid-template-columns: 1fr 2fr;
+        min-height: 80vh;
     }
 
 
@@ -101,6 +102,14 @@
         padding-left: 110px;
     };
    }
+
+   &Page{
+    padding-left: 78px;
+    width: 100%;
+    
+    @include mx.tablet{
+        padding-left: 88px;
+    };}
 
 }
 
@@ -254,9 +263,6 @@ height: 44px;
         }
     }
 
-
-   
-
     &Img{
         border-radius: 10px;
         margin-bottom: 8px;
@@ -279,9 +285,60 @@ height: 44px;
         font-weight: 500;
         color: fn.get-color("input-label");
     }
-
-
 }
+
+/* progress part of dashboard's aside */
+.dashProg{
+
+    &Frame{
+    margin-top: 40px;
+    margin-bottom: 20px;
+    
+
+    @include mx.tablet{
+        margin-top: 0;
+        margin-bottom: 52;
+    }
+
+    @include mx.desktop{
+        margin-top: 40px;
+        ;
+    }}
+
+    &Title{
+        color: fn.get-color("input-label");
+        margin-top: 14px;
+        margin-bottom: 20px;
+
+        @include mx.tablet{
+            margin-bottom: 50px;
+        }
+
+        @include mx.desktop{
+            margin-top: 9px;
+            margin-bottom: 65px;
+        }
+    }
+
+    &Wrap{
+        margin: 0 auto;
+        width: 80px;
+        height: 80px;
+        padding: 24px;
+        border-radius: 100%;
+        background-color: fn.get-color("background-input");
+
+        @include mx.tablet{
+            width: 100px;
+        height: 100px;
+        padding: 15px 25px;
+        }
+
+    }
+
+   }
+
+   
 
 
 

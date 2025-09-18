@@ -11,7 +11,7 @@ const FormBlock = () => {
     <div className="wrapFormBlock">
       <div className="logo-wrap">
         <svg width="42" height="17">
-          <use href="../../../../public/sprite.svg#icon-favicon"></use>
+          <use href="/sprite.svg#icon-favicon"></use>
         </svg>
         <span className="logoName">READ JOURNEY</span>
       </div>
