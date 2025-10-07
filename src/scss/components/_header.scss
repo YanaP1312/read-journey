@@ -46,24 +46,22 @@
 /* styles for common header */
 
 .header{
-    @include mx.frame;
-    @include mx.disFlex;
-    
     position: relative;
-
     justify-content: space-between;
     border-radius: 15px;
     padding: 11px 20px;
     margin-bottom: 10px;
+    @include mx.frame;
+    @include mx.disFlex;
 
 
     @include mx.tablet{
+        &{
         padding: 16px;
     margin-bottom: 16px;
     justify-content: initial;
+        }
     }
-
-
 }
 
 
@@ -72,12 +70,16 @@
     display: none;
 
     @include mx.tablet{
+        &{
         display: flex;
         margin-left: 223px;
+        }
     }
 
     @include mx.desktop{
+        &{
         margin-left: 334px;
+        }
     }
 }
 
@@ -87,25 +89,27 @@
     gap: 20px;
 
     @include mx.tablet{
+        &{
         flex-direction: row;
         gap: 32px;
+        }
     }
 
     @include mx.desktop{
-        gap: 40px;
+        &{
+        gap: 40px;}
     }
 }
 
 
 .nav-link {
-    @include mx.main-text;
-
     font-weight: 500;
 line-height: 1.125;
 letter-spacing: -0.02em;
     color: fn.get-color("input-label");
     position: relative;
     transition: color 0.3s ease;
+    @include mx.main-text;
   
     &.active {
       color: fn.get-color("text-primary");
@@ -127,41 +131,45 @@ letter-spacing: -0.02em;
   /* user bar */
 
 .wrapUserBar{
+    gap: 10px;
     @include mx.disFlex;
 
-    gap: 10px;
-
     @include mx.tablet{
+        &{
         gap: 16px;
-        margin-left: auto
+        margin-left: auto}
         
     }
 }
 
 .userBar{
-    @include mx.disFlex;
     gap: 8px;
+    @include mx.disFlex;
+    
 
     &Round{
-        @include mx.disFlexFull;
-
         border: 1px solid fn.get-color("input-label");
         border-radius: 100%;
         background-color: fn.get-color("background-input");
         width: 35px;
         height: 35px;
+        @include mx.disFlexFull;
 
         @include mx.tablet{
+            &{
             width: 42px;
-        height: 42px; 
+        height: 42px; }
         }
     }
 
     &Name{
-display: none;
+        &{
+display: none;}
 
 @include mx.desktop{
+    &{
     display: block;
+    }
 }
     }
 }
@@ -178,10 +186,9 @@ display: none;
 
 
 .burgerBtn{
-    @include mx.disFlexFull;
-
     width: 28px;
     height: 28px;
+    @include mx.disFlexFull;
 
     @include mx.tablet {
         display: none;
@@ -189,9 +196,8 @@ display: none;
 }
 
 .logoWrapHeader{
-    @include mx.disFlex;
-
     gap: 4px;
+    @include mx.disFlex;
 }
 
 .logoNameHeader{
@@ -204,9 +210,10 @@ display: none;
 }
 
 .logOutBtn{
-    @include mx.common-btn;
     padding: 10px 20px;
+    @include mx.common-btn;
 
     @include mx.tablet{
-    padding: 12px 28px;}
+        &{
+    padding: 12px 28px;}}
 }

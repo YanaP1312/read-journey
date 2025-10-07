@@ -3,10 +3,10 @@
 @use "../utils/mixins" as mx;
 
 body {
+  font-family: var.$main-font;
+    background-color: fn.get-color("background");
     @include mx.main-text;
     @include mx.container;
-    font-family: var.$main-font;
-    background-color: fn.get-color("background");
   }
 
 

@@ -66,12 +66,14 @@ padding: 40px 64px;
 }
 
 .main-title{
-    @include mx.main-title;
     margin-bottom: 20px;
+    @include mx.main-title;
+    
 
     @include mx.tablet{
-       
+       &{
         margin-bottom: 40px;
+       }
     }
 
 
@@ -84,19 +86,23 @@ padding: 40px 64px;
 /* styles for img block */
 
 .wrapImgBlock{
-    @include mx.frame;
     padding: 20px 40px 0;
     width: 335px;
+    @include mx.frame;
 
 
     @include mx.tablet {
+        &{
        display: none;
+        }
     }
 
     @include mx.desktop {
+        &{
         display: flex;
         justify-content: center;
         align-items: flex-end;
         width: 600px;
+        }
 }
 }
