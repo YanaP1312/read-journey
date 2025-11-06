@@ -45,17 +45,18 @@ const ModalAddToLibrary = ({ onClose, book }: ModalAddToLibraryProps) => {
       {isLoading ? (
         <Loader />
       ) : (
-        <div>
+        <div className="modalContentWrap">
           <img
+          className="modalContentImg"
             src={book.imageUrl}
             alt={`Book cover - ${book.title}`}
             width="153"
             height="233"
           />
-          <h3>{book.title}</h3>
-          <p>{book.author}</p>
-          <p>{`${book.totalPages} pages`}</p>
-          <button type="button" onClick={handleAddBook}>
+          <h3 className="modalContentTitle">{book.title}</h3>
+          <p className="modalContentAuthor">{book.author}</p>
+          <p className="modalContentPage">{`${book.totalPages} pages`}</p>
+          <button className="modalContentBtn" type="button" onClick={handleAddBook}>
             Add to library
           </button>
         </div>

@@ -29,9 +29,9 @@ const Modal = ({ onClose, children }: ModalProps) => {
 
   return (
     <ModalPortal>
-      <div className="modal-backdrop" onClick={handleBackdropClick}>
-        <div className="modal-content">
-          <button className="modal-close" onClick={onClose}>
+      <div className="modalBackdrop" onClick={handleBackdropClick}>
+        <div className="modalContent">
+          <button className="modalClose" onClick={onClose}>
             <RxCross2 />
           </button>
           {children}
