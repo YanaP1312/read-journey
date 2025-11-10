@@ -193,7 +193,97 @@ svg{
     }
 
 }
-  
+
+/* contents for my reading page */
+
+.reading{
+
+    &Content{
+        margin-top: 40px;
+        flex-direction: column;
+        text-align: center;
+        letter-spacing: -0.02em;
+
+        @include mx.disFlexFull;
+
+        @include mx.tablet{
+            margin-top: 32px; 
+        }
+
+        @include mx.desktop{
+            margin-top: 44px;
+            margin-bottom: 33px; 
+        }
+    }
+
+        &Img{
+            width: 137px;
+height: 208px;
+            border-radius: 8px;
+            width: 100%;
+            object-fit: cover;
+            margin-bottom: 10px;
+
+            @include mx.tablet{
+                width: 169px;
+                height: 256px;
+                margin-bottom: 25px; 
+            }
+
+            @include mx.desktop{
+                width: 224px;
+height: 340px;
+            }
+        }
+
+
+
+    &Title{
+        font-weight: 700;
+font-size: 14px;
+line-height: 1.29;
+margin-bottom: 5px;
+
+@include mx.tablet{
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+    }
+    
+
+    &Author{
+        font-weight: 500;
+font-size: 12px;
+line-height: 1.2;
+        color: fn.get-color("input-label");
+        margin-bottom: 20px;
+
+        @include mx.tablet{
+            font-size: 14px;
+line-height: 1.29;
+margin-bottom: 16px;
+        }
+
+        @include mx.desktop{
+margin-bottom: 25px;
+        }
+    } 
+    
+    &Btn{
+        margin: 0 auto;
+        width: 40px;
+        height: 40px;
+    
+
+    @include mx.tablet{
+        width: 50px;
+        height: 50px;
+    }
+}
+}
+
 
 
 
