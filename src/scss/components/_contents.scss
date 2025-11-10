@@ -114,11 +114,17 @@ line-height: 1.2;
     border-radius: 12px !important;
     border: 1px solid #3e3e3e !important;
     min-height: 40px !important;
+    min-width: 120px !important;
     cursor: pointer !important;
     padding: 4px 12px !important;
     box-shadow: none !important;
 line-height: 1.33333 !important;
 letter-spacing: -0.02em !important;
+
+@include mx.tablet{
+    min-height: 46px !important;
+    min-width: 153px !important;
+}
   }
   
   .custom-select__single-value {
@@ -136,6 +142,10 @@ letter-spacing: -0.02em !important;
         margin: 4px !important;
         padding: 0 !important;
         background-color: transparent !important;
+
+        @include mx.tablet{
+            margin: 8px !important;
+        }
       }
 
       .custom-select__menu-list {
@@ -158,7 +168,31 @@ letter-spacing: -0.02em !important;
     color: fn.get-color("background-input") !important;
   }
   
-  
+.myLibrary{
+    &Del{
+    justify-content: space-between;
+       @include mx.disFlex; 
+    }
+
+    &Wrap{
+        max-width: 95px;
+    }
+
+    &Btn{
+        width: 28px;
+height: 28px;
+border-radius: 100%;
+border: 1px solid rgba(232, 80, 80, 0.1);
+background-color: rgba(232, 80, 80, 0.2);
+
+@include mx.disFlexFull;
+
+svg{
+    color: #e85050;
+}
+    }
+
+}
   
 
 

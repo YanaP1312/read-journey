@@ -54,8 +54,9 @@ const MyLibraryBooks = () => {
       />
       </div>
       {filteredBook.length === 0 ? (
-        <div>
-          <div>
+        <div className="specialNotic">
+        <div className="specialNoticWrap" >
+          <div className="specialNoticImg">
             <picture>
               <source
                 srcSet="../../../public/images/books-dt@2x.png 2x, ../../../public/images/books-dt.png 1x"
@@ -74,27 +75,31 @@ const MyLibraryBooks = () => {
             </picture>
           </div>
           <p>
-            To start training, add <span>some of your books</span> or from the
+            To start training, add <span className="specialNoticSpan">some of your books</span> or from the
             recommended ones
           </p>
         </div>
+        </div>
       ) : (
-        <ul>
+        <ul className="contentRecom">
           {filteredBook.map((book) => (
-            <li key={book._id}>
+            <li key={book._id} className="contentRecomWrap">
               <img
+              className="contentRecomImg"
                 src={book.imageUrl}
                 alt={`Book cover - ${book.title}`}
                 width="137"
                 height="208"
                 onClick={() => setSelectedBook(book)}
               />
-              <div>
-                <div>
-                  <h4>{book.title}</h4>
-                  <p>{book.author}</p>
+              <div className="myLibraryDel">
+                <div className="myLibraryWrap">
+                  <h4 className="contentRecomTitle">{book.title}</h4>
+                  <p className="contentRecomAuthor">{book.author}</p>
                 </div>
-                <button onClick={() => handleDeleteBook(book._id)}>
+                <button 
+                className="myLibraryBtn"
+                onClick={() => handleDeleteBook(book._id)}>
                   <FaRegTrashAlt width={14} height={14} />
                 </button>
               </div>

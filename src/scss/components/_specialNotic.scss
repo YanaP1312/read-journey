@@ -1,3 +1,50 @@
 @use "../utils/functions" as fn;
 @use "../utils//mixins" as mx;
 @use "../utils/variables" as var;
+
+/* common for notifications */
+
+.specialNotic{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+text-align: center;
+height: 80%;
+width: 100%;
+
+@include mx.disFlexFull;
+
+&Wrap{
+    flex-direction: column;
+    padding: 63px 0 80px;
+    width: 197px;
+
+    @include mx.disFlexFull;
+
+    @include mx.tablet{
+        width: 274px;
+    }
+}
+   
+
+    &Img{
+        width: 100px;
+height: 100px;
+        border-radius: 100%;
+background-color: fn.get-color("background-input");
+margin-bottom: 10px;
+
+@include mx.disFlexFull;
+
+@include mx.tablet{
+    width: 130px;
+height: 130px;
+margin-bottom: 20px;
+}
+    }
+
+    &Span{
+        color: fn.get-color("input-label"); 
+    }
+}
