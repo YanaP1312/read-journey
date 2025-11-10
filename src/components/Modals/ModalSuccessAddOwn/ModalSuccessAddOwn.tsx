@@ -6,7 +6,7 @@ interface ModalSuccessAddOwnProps{
 
 const ModalSuccessAddOwn = ({onClose}: ModalSuccessAddOwnProps) => {
     return (<Modal onClose={onClose}>
-<div>
+  <div className="specialNoticModal">
 <picture>
               <source
                 srcSet="/images/super-dt@2x.png 2x, /images/super-dt.png 1x"
@@ -23,9 +23,9 @@ const ModalSuccessAddOwn = ({onClose}: ModalSuccessAddOwnProps) => {
                 alt="books"
               />
             </picture>
-    <h2>Good job</h2>
-    <p>Your book is now in <span>the library</span>! The joy knows no bounds and now you can start your training</p>
-</div>
+    <h2 className="specialNoticTitle">Good job</h2>
+    <p className="specialNoticSpan">Your book is now in <span  className="specialNoticSpanTwo">the library!</span> The joy knows no bounds and now you can start your training</p>
+    </div>
     </Modal>)
 
 }

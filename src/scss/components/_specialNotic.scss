@@ -26,7 +26,25 @@ width: 100%;
         width: 274px;
     }
 }
-   
+
+&Modal{
+    flex-direction: column;
+    max-width: 335px;
+    padding: 40px 27px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+text-align: center;
+
+
+    @include mx.disFlexFull;
+
+    @include mx.tablet{
+        width: 342px;
+        padding: 50px;
+    }
+}
 
     &Img{
         width: 100px;
@@ -44,7 +62,20 @@ margin-bottom: 20px;
 }
     }
 
+    &Title{
+        font-weight: 700;
+font-size: 18px;
+line-height: 1;
+margin-top: 20px;
+margin-bottom: 10px;
+    }
+
     &Span{
         color: fn.get-color("input-label"); 
     }
+
+    &SpanTwo{
+        color: fn.get-color("text-primary"); 
+    }
+
 }

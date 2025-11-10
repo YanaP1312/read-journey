@@ -23,17 +23,18 @@ const ModalDetailIfo = ({ onClose, book }: ModalDetailIfoProps) => {
 
   return (
     <Modal onClose={onClose}>
-      <div>
+      <div className="modalContentWrap">
         <img
-          src={book.imageUrl}
+        className="modalContentImg"
+          src={book.imageUrl || "/images/placeholder-cover.png"}
           alt={`Book cover - ${book.title}`}
           width="153"
           height="233"
         />
-        <h3>{book.title}</h3>
-        <p>{book.author}</p>
-        <p>{`${book.totalPages} pages`}</p>
-        <button type="button" onClick={handleStartBook}>
+        <h3 className="modalContentTitle">{book.title}</h3>
+        <p className="modalContentAuthor">{book.author}</p>
+        <p className="modalContentPage">{`${book.totalPages} pages`}</p>
+        <button type="button" onClick={handleStartBook} className="modalContentBtn">
           Start reading
         </button>
       </div>

@@ -86,7 +86,7 @@ const MyLibraryBooks = () => {
             <li key={book._id} className="contentRecomWrap">
               <img
               className="contentRecomImg"
-                src={book.imageUrl}
+                src={book.imageUrl || "/images/placeholder-cover.png"}
                 alt={`Book cover - ${book.title}`}
                 width="137"
                 height="208"
