@@ -107,6 +107,60 @@ line-height: 1.2;
     }  
 }
 
+/* contents for my library page */
+
+.custom-select__control {
+    background-color: transparent !important;
+    border-radius: 12px !important;
+    border: 1px solid #3e3e3e !important;
+    min-height: 40px !important;
+    cursor: pointer !important;
+    padding: 4px 12px !important;
+    box-shadow: none !important;
+line-height: 1.33333 !important;
+letter-spacing: -0.02em !important;
+  }
+  
+  .custom-select__single-value {
+    color: fn.get-color("text-primary") !important;}
+
+.custom-select__indicator-separator {
+        display: none !important;
+      }
+
+      .custom-select__dropdown-indicator {
+        color: fn.get-color("text-primary")!important;
+      }
+
+      .custom-select__menu {
+        margin: 4px !important;
+        padding: 0 !important;
+        background-color: transparent !important;
+      }
+
+      .custom-select__menu-list {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        border-radius: 12px !important;
+      }
+  
+  .custom-select__option {
+    padding: 8px 12px;
+    cursor: pointer;
+    background: fn.get-color("background-input") !important;
+    color: fn.get-color("input-label") !important;
+
+  }
+  
+
+  .custom-select__option--is-focused {
+    background-color: fn.get-color("text-primary")!important;
+    color: fn.get-color("background-input") !important;
+  }
+  
+  
+  
+
 
 
 

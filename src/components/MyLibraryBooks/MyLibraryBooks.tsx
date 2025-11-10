@@ -41,14 +41,18 @@ const MyLibraryBooks = () => {
 
   return (
     <section className="primary">
-      <h2>My library</h2>
+      <div className="contentContainer">
+      <h2 className="contentTitle">My library</h2>
       <Select
         options={options}
         value={options.find((opt) => opt.value === currentStatus)}
         onChange={(selectedOption) =>
           dispatch(setFilterStatus(selectedOption?.value))
         }
+        isSearchable={false}
+        classNamePrefix="custom-select"
       />
+      </div>
       {filteredBook.length === 0 ? (
         <div>
           <div>
