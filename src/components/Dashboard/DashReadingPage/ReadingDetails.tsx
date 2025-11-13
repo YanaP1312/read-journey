@@ -12,13 +12,13 @@ const ReadingDetails = () => {
     if(!book) return null;
 
     return <section>
-        <div>
-        <h3>{viewMode === "diary"? "Diary" : "Statistics"}</h3>
-        <div>
+        <div className="statisticBar">
+        <h3 className="dashTitle">{viewMode === "diary"? "Diary" : "Statistics"}</h3>
+        <div className="statisticWrap">
             <button disabled={viewMode==="diary"} onClick={() => setViewMode("diary")}>
-        <img src="/hourglass.svg" width={20} height={20} alt="Reading dairy icon"/></button>
+        <img src="/hourglass.svg" alt="Reading dairy icon"/></button>
         <button disabled={viewMode==="statistics"} onClick={() => setViewMode("statistics")}>
-        <img src="/pie-chart.svg" width={20} height={20} alt="Reading statistic icon"/></button>
+        <img src="/pie-chart.svg"  alt="Reading statistic icon"/></button>
         </div>
         </div>
         {viewMode === "diary"? (<Diary progress={book.progress ?? []} totalPages={book.totalPages} bookId={book._id}/>) : <Statistics progress={book.progress} totalPages={book.totalPages}/>}
