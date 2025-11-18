@@ -26,7 +26,7 @@ const Diary = ({ progress = [], totalPages, bookId }: DiaryProps) => {
   };
 
   return (
-    <div style={{ maxHeight: "400px", overflowY: "auto", paddingRight: "8px" }}>
+    <div className="diaryWrap">
       {sortedDates.map((date) => (
         <ReadingDayBlock
           key={date}

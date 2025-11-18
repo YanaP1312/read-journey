@@ -18,18 +18,15 @@ const ReadingDayBlock = ({
   }, 0);
 
   return (
-    <div style={{ marginBottom: "24px" }}>
-      <div
-        style={{
-          fontWeight: "600",
-          fontSize: "16px",
-          marginBottom: "12px",
-          color: "black",
-        }}
-      >
-        {date} — <span style={{ color: "#aaa" }}>{totalPagesRead} pages</span>
+    <div>
+      <div className="dayCommon">
+        <div className="dayWrap">
+        <div className="dayDecor"></div>
+        <span>{date}</span> 
+        </div>
+        <span className="dayPages">{totalPagesRead} pages</span>
       </div>
-
+<div className="dayBlock">
       {sessions.map((item) => (
         <ReadingSessionCard
           key={item._id}
@@ -38,6 +35,7 @@ const ReadingDayBlock = ({
           onDelete={onDelete}
         />
       ))}
+      </div>
     </div>
   );
 };
