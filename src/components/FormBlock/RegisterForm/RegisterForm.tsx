@@ -26,6 +26,7 @@ const RegisterForm = () => {
    await dispatch(register(data)).unwrap();
       reset();
       navigate("/recommended");
+      toast("🥰📚 Nice to meet you, dear reader");
     } catch(err: any) {toast.error(err.message || "Registration failed");}
   };
 

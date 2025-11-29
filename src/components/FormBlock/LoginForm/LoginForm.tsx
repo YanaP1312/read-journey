@@ -26,6 +26,7 @@ const LoginForm = () => {
     await dispatch(login(data)).unwrap();
       reset();
       navigate("/recommended");
+      toast("🥰📚 Welcome, dear reader");
     } catch(err: any) {toast.error(err.message || "Login failed")};
   };
 
