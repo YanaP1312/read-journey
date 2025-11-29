@@ -8,11 +8,8 @@ import type {
   User,
 } from "../helpers/types/interfacesAuth";
 import { handleAxiosError } from "../helpers/functions/handlerAxiosError";
+import { clearAuthHeader, setAuthHeader } from "../helpers/utils/authApiHelpers";
 
-const setAuthHeader = (token: string) =>
-  (api.defaults.headers.common.Authorization = `Bearer ${token}`);
-
-const clearAuthHeader = () => (api.defaults.headers.common.Authorization = "");
 
 export const register = createAsyncThunk<
   User,

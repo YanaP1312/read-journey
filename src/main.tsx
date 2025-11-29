@@ -8,12 +8,16 @@ import { ToastContainer } from "react-toastify";
 import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import "./scss/main.scss"
+import Loader from "./components/Loader/Loader.tsx";
+import { setupInterceptors } from "./redux/helpers/utils/setupInterceptors.ts";
+
+setupInterceptors();
 
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <BrowserRouter>
       <StrictMode>
-        <PersistGate persistor={persistor}>
+        <PersistGate  persistor={persistor} loading={<Loader/>}>
           <App />
           <ToastContainer
             position="top-center"
