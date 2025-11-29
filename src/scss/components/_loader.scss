@@ -1,0 +1,10 @@
+@use "../utils/functions" as fn;
+@use "../utils//mixins" as mx;
+@use "../utils/variables" as var;
+
+
+.loader{
+    height: 80vh;
+    
+    @include mx.disFlexFull;
+}
