@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../redux/helpers/hooks";
-import { selectError, selectIsLoading } from "../../../redux/auth/selectors";
+import { selectIsLoading } from "../../../redux/auth/selectors";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import type { RegisterCredentials } from "../../../redux/helpers/types/interfacesAuth";
