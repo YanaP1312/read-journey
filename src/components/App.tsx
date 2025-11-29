@@ -72,7 +72,9 @@ function App() {
           </PrivateRoute>
         }
       >
-        <Route index element={<Navigate to="/recommended" />} />
+<Route index element={<Navigate to="/recommended" />} />
+
+
         <Route
           path="recommended"
           element={

@@ -13,6 +13,8 @@ const PrivateRoute = ({
   redirectTo = "/login",
 }: PrivateRouteProps) => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  
+  
 
   return isLoggedIn ? children : <Navigate to={redirectTo} />;
 };

@@ -14,6 +14,7 @@ const Recommended = () => {
 
     return <section className="dashBlockFrame">
         <h3 className="dashTitle">Recommended books</h3>
+        <div className="dashReccomListWrap">
         <ul className="dashReccomList">{books?.map(book => (<li key={book._id}>
         
         <img
@@ -26,6 +27,7 @@ const Recommended = () => {
             <div className="dashReccomWrap">
             <h4 className="dashReccomTitle">{book.title}</h4>
             <p className="dashReccomAuthor">{book.author}</p></div></li>))}</ul>
+            </div>
         <Link to="/recommended" className="workOutLinkWrap"><p className="workOutLink">Home</p> <IoArrowForward className="workOutArrow" /></Link>
 
     </section>
