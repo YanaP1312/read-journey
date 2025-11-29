@@ -29,5 +29,6 @@ export interface AuthState {
   user: User | NullableUser;
   isLoggedIn: boolean;
   isRefreshing: boolean;
+  isLoading: boolean;
   error: string | null;
 }

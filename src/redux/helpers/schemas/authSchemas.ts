@@ -5,7 +5,7 @@ export const registerSchema = yup.object().shape({
   email: yup
     .string()
     .email()
-    // .matches(/^w+@[a-zA-Z_]+?.[a-zA-Z]{2,3}$/, "Invalid email format")
+    .matches(/^[\w.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "The email must be in format test@gmail.com")
     .required("Email is required"),
   password: yup
     .string()

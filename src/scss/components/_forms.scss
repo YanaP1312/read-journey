@@ -50,7 +50,9 @@
 
    &-error{
     padding-left: 14px;
-    color: fn.get-color("wrong")
+    color: fn.get-color("wrong");
+
+    @include mx.adaptive-font(12px, 14px, 14px);
    }
 
    &-name{

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../redux/helpers/hooks";
-import { selectError } from "../../../redux/auth/selectors";
+import { selectError, selectIsLoading } from "../../../redux/auth/selectors";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import type { RegisterCredentials } from "../../../redux/helpers/types/interfacesAuth";
@@ -12,7 +12,7 @@ import PasswordInput from "../PasswordInput/PasswordInput";
 const RegisterForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const backendError = useAppSelector(selectError);
+  const isLoading = useAppSelector(selectIsLoading);
 
   const {
     register: formRegister,
@@ -22,11 +22,11 @@ const RegisterForm = () => {
   } = useForm<RegisterCredentials>({ resolver: yupResolver(registerSchema) });
 
   const onSubmit = async (data: RegisterCredentials) => {
-    const resultAction = await dispatch(register(data));
-    if (register.fulfilled.match(resultAction)) {
+    try{
+   await dispatch(register(data)).unwrap();
       reset();
       navigate("/recommended");
-    } else toast.error(backendError);
+    } catch(err: any) {toast.error(err.message || "Registration failed");}
   };
 
   return (
@@ -52,7 +52,7 @@ const RegisterForm = () => {
       />
       </div>
 <div className="btms-block">
-      <button className="btms-block-btn" type="submit">Registration</button>
+      <button className="btms-block-btn" type="submit" disabled={isLoading}>{isLoading ? "Loading..." : "Registration"}</button>
       <Link to="/login" className="btms-block-link">Already have an account?</Link>
       </div>
     </form>

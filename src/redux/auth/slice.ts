@@ -12,6 +12,7 @@ const initialState: AuthState = {
   user: { _id: null, name: null, email: null, token: null, refreshToken: null },
   isLoggedIn: false,
   isRefreshing: false,
+  isLoading: false,
   error: null,
 };
 
@@ -30,18 +31,20 @@ const authSlice = createSlice({
         state.user.refreshToken = payload.refreshToken;
         state.isRefreshing = false;
         state.isLoggedIn = true;
+        state.isLoading = false;
       })
       .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+        state.isLoading = false;
       })
 
       .addMatcher(
         isAnyOf(register.pending, login.pending, logout.pending),
         (state) => {
           state.isLoggedIn = false;
-          state.error = null;
+          state.isLoading = true;
         }
       )
       .addMatcher(
@@ -49,12 +52,15 @@ const authSlice = createSlice({
         (state, { payload }) => {
           state.user = payload;
           state.isLoggedIn = true;
+          state.isLoading = false;
         }
       )
       .addMatcher(
         isAnyOf(register.rejected, login.rejected, logout.rejected),
         (state, { payload }) => {
+          state.isLoading = false;
           state.error = payload?.message || "Unknown error";
+          
         }
       )
       .addMatcher(
@@ -62,6 +68,7 @@ const authSlice = createSlice({
         (state) => {
           state.isRefreshing = true;
           state.error = null;
+          state.isLoading = true;
         }
       )
 
@@ -71,6 +78,7 @@ const authSlice = createSlice({
           state.isRefreshing = false;
           state.isLoggedIn = false;
           state.error = payload?.message ?? "Unknown error";
+          state.isLoading = false;
         }
       ),
 });
