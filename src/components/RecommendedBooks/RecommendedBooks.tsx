@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from "../../redux/helpers/hooks";
 import { getRecommended } from "../../redux/recommendedBooks/operations";
 import {
   selectIsLoading,
-  selectPage,
   selectResult,
   selectTotalPages,
 } from "../../redux/recommendedBooks/selectors";
