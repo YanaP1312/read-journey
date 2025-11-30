@@ -12,7 +12,7 @@ const MyBook = () => {
     return <section className="primary">
         <h2 className="contentTitle">My reading</h2>
         <div className="readingContent">
-            <div className="readingWrap">
+            
         <img
             src={book?.imageUrl || "/images/placeholder-cover.png"}
             alt={`Book cover - ${book?.title}`}
@@ -26,7 +26,7 @@ const MyBook = () => {
         </div>
 
             <img className="readingBtn" src={isReading? "/stop.svg" : "/play.svg"} width={50} height={50} alt={isReading? "Stop reading icon" : "Start reading icon"}/>
-            </div>
+            
         </div>
 
     </section>

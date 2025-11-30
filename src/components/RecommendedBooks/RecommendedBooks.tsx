@@ -18,8 +18,6 @@ const RecommendedBooks = () => {
   const {page} = useParams<{page?: string}>();
   const navigate = useNavigate();
 
-
-  const recomBookPage = useAppSelector(selectPage);
   const recomBooks = useAppSelector(selectResult);
   const totalPages = useAppSelector(selectTotalPages);
 const isLoading = useAppSelector(selectIsLoading);
@@ -61,7 +59,11 @@ const isLoading = useAppSelector(selectIsLoading);
         </button>
       </div>)}
       </div>
-      <ul className="contentRecom">
+      {recomBooks.length === 0 ? (<div className="resetWrap">
+  <p className="noResults">Sorry, no books found.</p> 
+   </div>
+) :
+      (<ul className="contentRecom">
         {recomBooks.map((book) => (
           <li className="contentRecomWrap" key={book._id} onClick={() => setSelectedBook(book)}>
             <img
@@ -75,7 +77,7 @@ const isLoading = useAppSelector(selectIsLoading);
             <p className="contentRecomAuthor">{book.author}</p>
           </li>
         ))}
-      </ul>
+      </ul>)}
       {selectedBook && <ModalAddToLibrary book={ selectedBook} onClose={() => setSelectedBook(null)} />}
     </section>
   );

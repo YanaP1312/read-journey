@@ -84,7 +84,9 @@
    &Error{
     &{
     padding-left: 14px;
-    color: fn.get-color("wrong")
+    color: fn.get-color("wrong");
+
+    @include mx.adaptive-font(10px, 12px, 12px)
     }
    }
 
@@ -566,20 +568,126 @@ cursor: pointer;
   }
 
   .pie{
-    &Wrap{
+        &Intro{
+            display: none;
+
+            @include mx.desktop{
+                display: block;
+        margin-bottom: 20px;
+        font-weight: 500;
+        line-height: 1.29;
+        letter-spacing: -0.02em;
+        font-size: 14px;
+        color: fn.get-color("input-label");}
+        };
+
+        &Container{
+        padding: 20px;
         border-radius: 12px;
-        background: fn.get-color("background-input"); 
-    }
-    &Text{
-    font-weight: 500;
+        background: fn.get-color("background-input");
+        margin: 0;
+        text-align: center;
+        color: fn.get-color("input-label");
+
+        @include mx.tablet{
+            padding: 28px;
+        }
+
+        @include mx.desktop{
+            padding: 20px;
+        }
+        }
+
+        &ChartWrap{
+  background: transparent;
+  border-radius: 50%;
+  margin: 0 auto;
+  width: 116px;
+  height: 116px;
+  margin-bottom: 10px;
+
+  @include mx.disFlexFull;
+
+  @include mx.tablet{
+    width: 138px;
+  height: 138px;
+  };
+
+  @include mx.desktop{
+    width: 189px;
+  height: 189px;
+  margin-bottom: 14px;
+  };
+}
+&Percent{
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            fill: fn.get-color("text-primary");
+        }
+
+        &WrapPerc{
+            margin-bottom: 4px;
+            font-weight: 500;
+font-size: 14px;
 line-height: 1.29;
 letter-spacing: -0.02em;
-color: fn.get-color("input-label");
+color: fn.get-color("text-primary");
+gap: 5px;
 
-@include mx.adaptive-font(10px, 14px, 14px)}
+@include mx.disFlexFull;
 
+@include mx.tablet{
+    margin-bottom: 8px;
+    font-size: 18px;
+line-height: 1;
+gap: 8px;
+}
 
+        }
+
+        &Squ{
+            border-radius: 4px;
+            width: 14px;
+            height: 14px; 
+            background-color: fn.get-color("success");
+        }
+
+        &Text{
+            font-weight: 500;
+font-size: 10px;
+line-height: 1.2;
+letter-spacing: -0.02em;
+
+@include mx.tablet{
+    font-size: 12px;
+    line-height: 1.17;
+}
+        }
+
+        &Note{
+            margin-top: 8px;
+            @include mx.adaptive-font(8px, 10px, 10px)
+        };
   }
+
+
+  /* reset filters */
+
+
+  .noResults{
+    margin-top: 14px;
+    color: fn.get-color("accent");
+    margin-bottom: 14px;
+    
+    @include mx.adaptive-font(16px, 20px, 20px);
+
+    @include mx.tablet{
+        margin-top: 30px;
+    };
+  }
+
 
 
 

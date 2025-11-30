@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ModalStartReading from "../../Modals/ModalStartReading/ModalStartReading";
 import { useAppDispatch, useAppSelector } from "../../../redux/helpers/hooks";
 import { selectBook } from "../../../redux/ownBookInfo/selectors";
 import { useForm } from "react-hook-form";
@@ -7,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { readingSchema } from "../../../redux/helpers/schemas/dashboardFormsSchemas";
 import { toast } from "react-toastify";
 import { readingFinish, readingStart } from "../../../redux/ownBookInfo/operations";
+import ModalFinishReading from "../../Modals/ModalFinishReading/ModalFinishReading";
 
 interface FormValues {
     page: number;
@@ -23,13 +23,19 @@ const isReading = lastProgress?.status === "active";
 
 const {
     register, handleSubmit, formState: {errors, isSubmitting}, reset,
-} = useForm<FormValues>({resolver: yupResolver(readingSchema)});
+} = useForm<FormValues>({resolver: yupResolver(readingSchema), context: { book }});
 
 const onSubmit = async({page}: FormValues) => {
     if (!book?._id) {
         toast.error("Book not found");
         return;
       }
+
+      if (page > book.totalPages) {
+        toast.error(`Page cannot exceed ${book.totalPages}`);
+        return;
+      }
+
     const payload = {id: book._id, page};
 
     try {
@@ -66,7 +72,7 @@ const onSubmit = async({page}: FormValues) => {
             </button>
 
         </form>
-        {isOpenModal && <ModalStartReading onClose={() => setIsOpenModal(false)}/>}
+        {isOpenModal && <ModalFinishReading onClose={() => setIsOpenModal(false)}/>}
         </section>
     )
 

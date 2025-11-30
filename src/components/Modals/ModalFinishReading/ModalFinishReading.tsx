@@ -4,10 +4,10 @@ interface ModalStartReadingProps {
     onClose: () => void;
 } 
 
-const ModalStartReading = ({onClose}: ModalStartReadingProps) => {
+const ModalFinishReading = ({onClose}: ModalStartReadingProps) => {
     return (
         <Modal onClose={onClose}>
-            <div>
+            <div className="specialNoticModal">
             <picture>
               <source
                 srcSet="/images/books-dt@2x.png 2x, /images/books-dt.png 1x"
@@ -24,11 +24,11 @@ const ModalStartReading = ({onClose}: ModalStartReadingProps) => {
                 alt="books"
               />
             </picture>
-          </div>
-<h2>The book is read</h2>
-<p>It was an <span>exciting journey</span>, where each page revealed new horizons, and the characters became inseparable friends.</p>
+          
+<h2 className="specialNoticTitle">The book is read</h2>
+<p className="specialNoticSpan">It was an <span className="specialNoticSpanTwo">exciting journey</span>, where each page revealed new horizons, and the characters became inseparable friends.</p></div>
         </Modal>
     )
 }
 
-export default ModalStartReading;
+export default ModalFinishReading;

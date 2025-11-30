@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <Link to="/recommended" className="logoWrapHeader">
+      <Link to="/recommended/1" className="logoWrapHeader">
         <svg width="42" height="17">
           <use href="/sprite.svg#icon-favicon" />
         </svg>

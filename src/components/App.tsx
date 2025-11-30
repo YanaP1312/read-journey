@@ -97,6 +97,8 @@ if(token && isRefreshing){
       >
 <Route index element={<Navigate to="/recommended/1" />} />
 
+<Route path="recommended" element={<Navigate to="/recommended/1" />} />
+
 
         <Route
           path="recommended/:page"
