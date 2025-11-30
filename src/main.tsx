@@ -9,9 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import "./scss/main.scss"
 import Loader from "./components/Loader/Loader.tsx";
-import { setupInterceptors } from "./redux/helpers/utils/setupInterceptors.ts";
 
-setupInterceptors();
 
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>

@@ -14,7 +14,7 @@ const MyBook = () => {
         <div className="readingContent">
             <div className="readingWrap">
         <img
-            src={book?.imageUrl}
+            src={book?.imageUrl || "/images/placeholder-cover.png"}
             alt={`Book cover - ${book?.title}`}
             width="224"
             height="340"

@@ -1,16 +1,19 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { useAppDispatch, useAppSelector } from "../redux/helpers/hooks";
-import { selectIsLoggedIn, selectIsRefreshing } from "../redux/auth/selectors";
+import { selectIsLoggedIn, selectIsRefreshing, selectUser} from "../redux/auth/selectors";
 import { lazy, useEffect } from "react";
 import { getCurrentUser } from "../redux/auth/operations";
 import RestrictedRoute from "./RestrictedRoute";
 import Layout from "./Layuot";
 import PrivateRoute from "./PrivateRoute";
 import LazyWrapper from "../redux/helpers/utils/LazyWrapper";
-import { store } from "../redux/store";
 import Loader from "./Loader/Loader";
 import { getOwnBooks } from "../redux/ownBooks/operations";
+import { setupInterceptors } from "../redux/helpers/utils/setupInterceptors";
+
+
+
 
 const MainPage = lazy(() => import("../pages/MainPage/MainPage"));
 const RecommendedPage = lazy(
@@ -25,21 +28,41 @@ function App() {
   const dispatch = useAppDispatch();
   const isRefreshing = useAppSelector(selectIsRefreshing);
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
+  const user = useAppSelector(selectUser)
+  const token = user.token;
 
-  useEffect(() => {
-    const token = store.getState().auth.user.token;
-    if (token) dispatch(getCurrentUser());
-  }, [dispatch]);
+useEffect(() => {
+  setupInterceptors();
+}, []);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(getOwnBooks());
-    }
-  }, [dispatch, isLoggedIn]);
+useEffect(() => {
+  if(token){
+    dispatch(getCurrentUser());
+  }
+}, [dispatch, token]);
 
-  return isRefreshing ? (
-    <Loader />
-  ) : (
+useEffect(() => {
+  if(isLoggedIn){
+    dispatch(getOwnBooks());
+  }
+}, [dispatch, isLoggedIn]);
+
+if(token && isRefreshing){
+  return <Loader/>;
+}
+
+  // useEffect(() => {
+  //   const token = store.getState().auth.user.token;
+  //   if (token) dispatch(getCurrentUser());
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     dispatch(getOwnBooks());
+  //   }
+  // }, [dispatch, isLoggedIn]);
+
+  return (
     <Routes>
       <Route
         path="/register"
@@ -92,7 +115,7 @@ function App() {
           }
         />
         <Route
-          path="reading"
+          path="reading/:bookId"
           element={
             <LazyWrapper>
               <ReadingPage />

@@ -18,7 +18,7 @@ const ModalDetailIfo = ({ onClose, book }: ModalDetailIfoProps) => {
     try{
       await dispatch(getOwnBookInfo(book._id)).unwrap();
     onClose();
-    navigate("/reading");} catch(error){toast.error}
+    navigate(`/reading/${book._id}`);} catch(error){toast.error("😔 Error loading books")}
   };
 
   return (
