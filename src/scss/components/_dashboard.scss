@@ -565,6 +565,22 @@ cursor: pointer;
 
   }
 
+  .pie{
+    &Wrap{
+        border-radius: 12px;
+        background: fn.get-color("background-input"); 
+    }
+    &Text{
+    font-weight: 500;
+line-height: 1.29;
+letter-spacing: -0.02em;
+color: fn.get-color("input-label");
+
+@include mx.adaptive-font(10px, 14px, 14px)}
+
+
+  }
+
 
 
 

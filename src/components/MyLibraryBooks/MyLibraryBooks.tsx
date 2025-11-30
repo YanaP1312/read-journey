@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import {  useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/helpers/hooks";
 import {
   selectCurrentStatus,
@@ -15,6 +15,7 @@ import { deleteOwnBook } from "../../redux/ownBooks/operations";
 import { toast } from "react-toastify";
 import Select from "react-select";
 import { setFilterStatus } from "../../redux/ownBooks/slice";
+import { useNavigate, useParams } from "react-router-dom";
 
 const options: { value: BookStatus | undefined; label: string }[] = [
   { value: undefined, label: "All books" },
@@ -24,11 +25,21 @@ const options: { value: BookStatus | undefined; label: string }[] = [
 ];
 
 const MyLibraryBooks = () => {
+  const { status } = useParams<{ status?: BookStatus }>();
   const dispatch = useAppDispatch();
   const filteredBook = useAppSelector(selectFilteredBooks);
   const currentStatus = useAppSelector(selectCurrentStatus);
   const error = useAppSelector(selectError);
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (status) {
+      dispatch(setFilterStatus(status));
+    } else {
+      dispatch(setFilterStatus(undefined));
+    }
+  }, [status, dispatch]);
 
   const handleDeleteBook = async (id: string) => {
     const result = await dispatch(deleteOwnBook(id));
@@ -44,14 +55,20 @@ const MyLibraryBooks = () => {
       <div className="contentContainer">
       <h2 className="contentTitle">My library</h2>
       <Select
-        options={options}
-        value={options.find((opt) => opt.value === currentStatus)}
-        onChange={(selectedOption) =>
-          dispatch(setFilterStatus(selectedOption?.value))
-        }
-        isSearchable={false}
-        classNamePrefix="custom-select"
-      />
+  options={options}
+  value={options.find((opt) => opt.value === currentStatus)}
+  onChange={(selectedOption) => {
+    const value = selectedOption?.value;
+    dispatch(setFilterStatus(value));
+    if (value) {
+      navigate(`/library/${value}`);
+    } else {
+      navigate(`/library`);
+    }
+  }}
+  isSearchable={false}
+  classNamePrefix="custom-select"
+/>
       </div>
       {filteredBook.length === 0 ? (
         <div className="specialNotic">

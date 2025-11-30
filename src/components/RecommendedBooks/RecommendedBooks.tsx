@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/helpers/hooks";
 import { getRecommended } from "../../redux/recommendedBooks/operations";
 import {
+  selectIsLoading,
   selectPage,
   selectResult,
   selectTotalPages,
@@ -10,38 +11,55 @@ import { IoIosArrowDropleft } from "react-icons/io";
 import { IoIosArrowDropright } from "react-icons/io";
 import type { Book } from "../../redux/helpers/types/interfacesBook";
 import ModalAddToLibrary from "../Modals/ModalAddToLibrary/ModalAddToLibrary";
+import { useNavigate, useParams } from "react-router-dom";
 
 const RecommendedBooks = () => {
   const dispatch = useAppDispatch();
-  const recomBooks = useAppSelector(selectResult);
+  const {page} = useParams<{page?: string}>();
+  const navigate = useNavigate();
+
+
   const recomBookPage = useAppSelector(selectPage);
+  const recomBooks = useAppSelector(selectResult);
   const totalPages = useAppSelector(selectTotalPages);
+const isLoading = useAppSelector(selectIsLoading);
+
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
-  const handleMorePage = () =>
-    dispatch(getRecommended({ page: recomBookPage + 1 }));
-  const handleLessPage = () =>
-    dispatch(getRecommended({ page: recomBookPage - 1 }));
+
+  const currentPage = page ? Number(page) : 1;
 
   useEffect(() => {
-    dispatch(getRecommended({ page: recomBookPage }));
-  }, [dispatch, recomBookPage]);
+    dispatch(getRecommended({ page: currentPage }));
+  }, [dispatch, currentPage]);
+
+  const handleMorePage = () => {
+    if(currentPage < totalPages){
+      navigate(`/recommended/${currentPage + 1}`);
+    }
+  };
+   
+
+  const handleLessPage = () => { if(currentPage > 1){
+      navigate(`/recommended/${currentPage - 1}`);}
+    }
 
   return (
     <section className="primary">
       <div className="contentContainer">
       <h2 className="contentTitle">Recommended</h2>
-      <div className="contentArrowsWrap">
-        <button className="contentArrows"  onClick={handleLessPage} disabled={recomBookPage === 1}>
+      {!isLoading && 
+      (<div className="contentArrowsWrap">
+        <button className="contentArrows"  onClick={handleLessPage} disabled={currentPage === 1}>
         <IoIosArrowDropleft />
         </button>
         <button className="contentArrows"
           onClick={handleMorePage}
-          disabled={recomBookPage === totalPages}
+          disabled={currentPage === totalPages}
         >
           <IoIosArrowDropright />
         </button>
-      </div>
+      </div>)}
       </div>
       <ul className="contentRecom">
         {recomBooks.map((book) => (

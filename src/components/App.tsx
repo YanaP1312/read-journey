@@ -70,7 +70,7 @@ if(token && isRefreshing){
           <LazyWrapper>
             <RestrictedRoute
               component={<MainPage />}
-              redirectTo="/recommended"
+              redirectTo="/recommended/1"
             />
           </LazyWrapper>
         }
@@ -81,7 +81,7 @@ if(token && isRefreshing){
           <LazyWrapper>
             <RestrictedRoute
               component={<MainPage />}
-              redirectTo="/recommended"
+              redirectTo="/recommended/1"
             />
           </LazyWrapper>
         }
@@ -95,11 +95,11 @@ if(token && isRefreshing){
           </PrivateRoute>
         }
       >
-<Route index element={<Navigate to="/recommended" />} />
+<Route index element={<Navigate to="/recommended/1" />} />
 
 
         <Route
-          path="recommended"
+          path="recommended/:page"
           element={
             <LazyWrapper>
               <RecommendedPage />
@@ -114,6 +114,14 @@ if(token && isRefreshing){
             </LazyWrapper>
           }
         />
+        <Route
+  path="library/:status"
+  element={
+    <LazyWrapper>
+      <MyLibraryPage />
+    </LazyWrapper>
+  }
+/>
         <Route
           path="reading/:bookId"
           element={

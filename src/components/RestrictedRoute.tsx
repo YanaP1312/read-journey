@@ -10,7 +10,7 @@ interface RestrictedRouteProps {
 
 const RestrictedRoute = ({
   component,
-  redirectTo = "/recommended",
+  redirectTo = "/recommended/1",
 }: RestrictedRouteProps) => {
   const isLoggedIn = useAppSelector(selectIsLoggedIn);
 

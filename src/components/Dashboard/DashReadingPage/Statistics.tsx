@@ -18,8 +18,8 @@ const Statistics = ({ totalPages, progress=[] }: StatisticsProps) => {
   const COLORS = ["#00C49F", "#CCCCCC"];
 
   return (
-    <div>
-        <p>Each page, each chapter is a new round of knowledge, a new step towards understanding. By rewriting statistics, we create our own reading history.</p>
+    <div className="pieWrap">
+        <p className="pieText">Each page, each chapter is a new round of knowledge, a new step towards understanding. By rewriting statistics, we create our own reading history.</p>
       <PieChart width={200} height={200}>
         <Pie
           data={data}
