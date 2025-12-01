@@ -25,7 +25,15 @@ const authSlice = createSlice({
       .addCase(logout.fulfilled, () => {
         return initialState;
       })
-
+      .addCase(
+       refreshTokens.rejected,
+        () => {
+          return {
+            ...initialState,
+            error: "Session expired, please log in again",
+          }
+        }
+      )
       .addCase(refreshTokens.fulfilled, (state, { payload }) => {
         state.user.token = payload.token;
         state.user.refreshToken = payload.refreshToken;
@@ -33,13 +41,20 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isLoading = false;
       })
+      .addCase(
+        getCurrentUser.rejected,
+        (state, { payload }) => {
+          state.isRefreshing = false;
+          state.isLoading = false;
+          state.error = payload?.message ?? "Unable to fetch user";
+        }
+      )
       .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
         state.isLoading = false;
       })
-
       .addMatcher(
         isAnyOf(register.pending, login.pending, logout.pending),
         (state) => {
@@ -69,16 +84,6 @@ const authSlice = createSlice({
           state.isRefreshing = true;
           state.error = null;
           state.isLoading = true;
-        }
-      )
-
-      .addMatcher(
-        isAnyOf(refreshTokens.rejected, getCurrentUser.rejected),
-        (state, { payload }) => {
-          state.isRefreshing = false;
-          state.isLoggedIn = false;
-          state.error = payload?.message ?? "Unknown error";
-          state.isLoading = false;
         }
       ),
 });

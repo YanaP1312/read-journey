@@ -1,4 +1,5 @@
-import { refreshTokens } from "../../auth/operations";
+import { toast } from "react-toastify";
+import { logout, refreshTokens } from "../../auth/operations";
 import { store } from "../../store";
 import { api } from "../api";
 import { setAuthHeader } from "./authApiHelpers";
@@ -16,8 +17,10 @@ export const setupInterceptors = () => {
           setAuthHeader(refreshData.token);
           return api(originalRequest);
         } catch (err) {
-          return Promise.reject(err);
-        }
+            store.dispatch(logout());
+            toast.error("Session expired, please log in again");
+            return Promise.reject(err);
+          }
       }
 
       return Promise.reject(error);

@@ -36,10 +36,10 @@ useEffect(() => {
 }, []);
 
 useEffect(() => {
-  if(token){
+  if(token && isLoggedIn){
     dispatch(getCurrentUser());
   }
-}, [dispatch, token]);
+}, [dispatch, token, isLoggedIn]);
 
 useEffect(() => {
   if(isLoggedIn){
@@ -50,17 +50,6 @@ useEffect(() => {
 if(token && isRefreshing){
   return <Loader/>;
 }
-
-  // useEffect(() => {
-  //   const token = store.getState().auth.user.token;
-  //   if (token) dispatch(getCurrentUser());
-  // }, [dispatch]);
-
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     dispatch(getOwnBooks());
-  //   }
-  // }, [dispatch, isLoggedIn]);
 
   return (
     <Routes>

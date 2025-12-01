@@ -74,37 +74,25 @@ export const getCurrentUser = createAsyncThunk<
   }
 >("auth/getCurrentUser", async (_, thunkAPI) => {
   const { token } = thunkAPI.getState().auth.user;
-  if (!token)
+  if (!token) {
     return thunkAPI.rejectWithValue({
       message: "Token doesn't found",
       status: 401,
     });
+  }
 
   try {
     setAuthHeader(token);
     const { data } = await api.get<User>("users/current");
     return data;
   } catch (error: any) {
-    if (error.response?.status === 401) {
-      try {
-        const refreshData = await thunkAPI.dispatch(refreshTokens()).unwrap();
-        const { data } = await api.get<User>("users/current");
-        return {
-          ...data,
-          token: refreshData.token,
-          refreshToken: refreshData.refreshToken,
-        };
-      } catch {
-        return thunkAPI.rejectWithValue({
-          message: "Unable to refresh session. Please sign in again.",
-          status: 401,
-        });
-      }
-    }
-
-    return thunkAPI.rejectWithValue(handleAxiosError(error));
+    return thunkAPI.rejectWithValue({
+      message: "Unable to refresh session. Please sign in again.",
+      status: error.response?.status ?? 500,
+    });
   }
 });
+
 
 export const logout = createAsyncThunk<
   void,
