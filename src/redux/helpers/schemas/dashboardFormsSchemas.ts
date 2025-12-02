@@ -18,7 +18,26 @@ export const readingSchema = yup.object().shape({
         });
       }
       return true;
-    }),
+    })
+    .test("next-page", function (value) {
+      const { book, mode } = this.options.context as {
+        book: { progress?: any[] },
+        mode?: "start" | "finish"
+      };
+      const lastProgress = book?.progress?.at(-1);
+      const lastPageRead = lastProgress?.finishPage ?? lastProgress?.startPage ?? 0;
+    
+      if (mode === "start") {
+        if (value && lastPageRead && value <= lastPageRead) {
+          return this.createError({
+            message: `Next session must start from page ${lastPageRead + 1} or higher`,
+            path: this.path,
+          });
+        }
+      }
+      return true;
+    })
+    
 });
 
 

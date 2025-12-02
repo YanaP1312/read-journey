@@ -6,9 +6,9 @@ import {
 import type { StatisticsProps } from "../../../redux/helpers/types/interfacesDashboard";
 
 const Statistics = ({ totalPages, progress = [] }: StatisticsProps) => {
-  const pagesRead = progress.reduce((sum, p) => {
+  const pagesRead = progress.reduce((max, p) => {
     const endPage = p.finishPage ?? p.startPage;
-    return sum + (endPage - p.startPage + 1);
+    return Math.max(max, endPage);
   }, 0);
 
   const percent = Math.min(((pagesRead / totalPages) * 100), 100).toFixed(0);
@@ -63,7 +63,7 @@ const Statistics = ({ totalPages, progress = [] }: StatisticsProps) => {
         <div className="pieSqu"></div>
 <p>{percent}%</p>
 </div>
-      <p className="pieText">{`${pagesRead} pages read`}</p>
+      <p className="pieText">{`${pagesRead} pages read and ${totalPages - pagesRead} pages left`}</p>
 
       {hasActiveSession && (
         <p className="pieNote">

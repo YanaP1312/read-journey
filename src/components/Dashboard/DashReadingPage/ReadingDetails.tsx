@@ -11,19 +11,32 @@ const ReadingDetails = () => {
 
     if(!book) return null;
 
-    return <section>
+    const isDone = book.status === "done";
+
+    return(
+         <section>
         <div className="statisticBar">
-        <h3 className="dashTitle">{viewMode === "diary"? "Diary" : "Statistics"}</h3>
+        <h3 className="dashTitle">{isDone
+            ? "Statistics"
+            : viewMode === "diary"
+            ? "Diary"
+            : "Statistics"}</h3>
+            {!isDone && (
         <div className="statisticWrap">
             <button disabled={viewMode==="diary"} onClick={() => setViewMode("diary")}>
         <img src="/hourglass.svg" alt="Reading dairy icon"/></button>
         <button disabled={viewMode==="statistics"} onClick={() => setViewMode("statistics")}>
         <img src="/pie-chart.svg"  alt="Reading statistic icon"/></button>
         </div>
-        </div>
-        {viewMode === "diary"? (<Diary progress={book.progress ?? []} totalPages={book.totalPages} bookId={book._id}/>) : <Statistics progress={book.progress} totalPages={book.totalPages}/>}
-    </section>
+            )}
+             </div>
 
-}
+            {isDone? (<Statistics progress={book.progress} totalPages={book.totalPages}/>) :
+       
+        viewMode === "diary" ? (<Diary progress={book.progress ?? []} totalPages={book.totalPages} bookId={book._id}/>) : (<Statistics progress={book.progress} totalPages={book.totalPages}/>)}
+    </section>
+    );
+
+};
 
 export default ReadingDetails;

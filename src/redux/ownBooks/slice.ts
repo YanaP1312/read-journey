@@ -38,9 +38,15 @@ const ownBooksSlice = createSlice({
       })
       .addCase(addOwnBook.fulfilled, (state, { payload }) => {
         state.allBooks.push(payload);
+        state.filteredBooks = state.currentStatus
+    ? state.allBooks.filter((book) => book.status === state.currentStatus)
+    : state.allBooks;
       })
       .addCase(addBookFromRecom.fulfilled, (state, { payload }) => {
         state.allBooks.push(payload);
+        state.filteredBooks = state.currentStatus
+    ? state.allBooks.filter((book) => book.status === state.currentStatus)
+    : state.allBooks;
       })
       .addCase(deleteOwnBook.fulfilled, (state, { payload }) => {
         state.allBooks = state.allBooks.filter(

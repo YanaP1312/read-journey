@@ -672,9 +672,60 @@ letter-spacing: -0.02em;
         };
   }
 
+.bookCompleted {
+    padding: 16px;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+
+    @include mx.disFlexFull;
+  
+  &Title {
+    color: fn.get-color("success");
+    font-weight: bold;
+
+    @include mx.adaptive-font(20px, 24px, 24px);
+  }
+  
+  &Text {
+    text-align: center;
+    color: fn.get-color("text-span");
+    
+
+    @include mx.adaptive-font(12px, 14px, 14px);
+   
+  }
+  
+  &Badge {
+    display: inline-block;
+    padding: 10px 20px;
+    background: fn.get-color("success");
+    color: fn.get-color("text-primary");
+    border-radius: 50px;
+    font-weight: bold;
+
+    @include mx.adaptive-font(12px, 14px, 14px);
+  }}
+  
+
 
   /* reset filters */
 
+  .resetWrap {
+    margin-top: 14px;
+    
+
+    @include mx.tablet{
+        margin-top: 30px;
+    justify-content: space-between;
+
+    @include mx.disFlex
+    };
+
+    @include mx.desktop{
+        margin-top: 40px;
+    };
+  }
 
   .noResults{
     margin-top: 14px;

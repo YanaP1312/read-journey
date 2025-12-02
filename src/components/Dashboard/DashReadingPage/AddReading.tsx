@@ -17,13 +17,14 @@ const AddReading = () => {
 const [isOpenModal, setIsOpenModal] = useState(false);
 const dispatch = useAppDispatch();
 const book = useAppSelector(selectBook);
+const isDone = book?.status === "done"
 const lastProgress = book?.progress?.at(-1);
 const isReading = lastProgress?.status === "active";
 
 
 const {
     register, handleSubmit, formState: {errors, isSubmitting}, reset,
-} = useForm<FormValues>({resolver: yupResolver(readingSchema), context: { book }});
+} = useForm<FormValues>({resolver: yupResolver(readingSchema), context: { book, mode: isReading ? "finish" : "start"  }});
 
 const onSubmit = async({page}: FormValues) => {
     if (!book?._id) {
@@ -56,7 +57,16 @@ const onSubmit = async({page}: FormValues) => {
 
     return (
         <section>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        { isDone? (
+        <div className="bookCompleted">
+        <h2 className="bookCompletedTitle">🎉 Congratulations!</h2>
+        <p className="bookCompletedText">
+          You’ve successfully finished this book.  
+          Your reading journey is complete and your progress is now at 100%.
+        </p>
+        <div className="bookCompletedBadge">✔ Book Completed</div>
+      </div>
+        ) :(<form onSubmit={handleSubmit(onSubmit)}>
             <h4 className="dashTitleForm">{isReading? "Stop page" : "Start page"}</h4>
             <div>
             <div className="dashInputsWrap">
@@ -72,6 +82,7 @@ const onSubmit = async({page}: FormValues) => {
             </button>
 
         </form>
+        )}
         {isOpenModal && <ModalFinishReading onClose={() => setIsOpenModal(false)}/>}
         </section>
     )

@@ -22,7 +22,8 @@ createRoot(document.getElementById("root")!).render(
             autoClose={4000}
             hideProgressBar={true}
             pauseOnHover
-            theme="colored"
+            theme="dark"
+            closeButton={true}
           />
         </PersistGate>
       </StrictMode>
