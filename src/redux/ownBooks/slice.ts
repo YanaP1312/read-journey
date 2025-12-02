@@ -46,6 +46,9 @@ const ownBooksSlice = createSlice({
         state.allBooks = state.allBooks.filter(
           (book) => book._id !== payload.id
         );
+        state.filteredBooks = state.currentStatus
+    ? state.allBooks.filter((book) => book.status === state.currentStatus)
+    : state.allBooks;
       })
       .addMatcher(
         isAnyOf(
