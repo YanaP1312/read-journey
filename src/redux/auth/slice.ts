@@ -28,10 +28,7 @@ const authSlice = createSlice({
       .addCase(
        refreshTokens.rejected,
         () => {
-          return {
-            ...initialState,
-            error: "Session expired, please log in again",
-          }
+          return initialState;
         }
       )
       .addCase(refreshTokens.fulfilled, (state, { payload }) => {
@@ -67,6 +64,7 @@ const authSlice = createSlice({
         (state, { payload }) => {
           state.user = payload;
           state.isLoggedIn = true;
+          state.isRefreshing = false;
           state.isLoading = false;
         }
       )

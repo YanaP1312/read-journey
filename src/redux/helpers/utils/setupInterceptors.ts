@@ -15,6 +15,11 @@ export const setupInterceptors = () => {
         try {
           const refreshData = await store.dispatch(refreshTokens()).unwrap();
           setAuthHeader(refreshData.token);
+
+          if (originalRequest.url.includes("users/current")) {
+            return Promise.reject(error);
+          } 
+           
           return api(originalRequest);
         } catch (err) {
             store.dispatch(logout());

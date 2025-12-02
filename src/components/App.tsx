@@ -36,10 +36,10 @@ useEffect(() => {
 }, []);
 
 useEffect(() => {
-  if(token && isLoggedIn){
+  if (token) {
     dispatch(getCurrentUser());
   }
-}, [dispatch, token, isLoggedIn]);
+}, [dispatch, token]);
 
 useEffect(() => {
   if(isLoggedIn){
