@@ -26,7 +26,9 @@ This project was created as a demo platform for book lovers who want to organize
 - 🗑 Delete books from library directly (no extra confirmation step)  
 - 📖 Start/Stop reading sessions with backend synchronization  
 - 📊 Reading statistics displayed as diary entries or charts  
-- 💬 Toast notifications for feedback and errors  
+- ✅ Smart validation rules for reading sessions (sequential page enforcement, no duplicate starts)  
+- 🎉 Completed Book Mode: finished books show only statistics with a celebratory placeholder, diary actions disabled  
+- 🔔 Enhanced toast notifications with close buttons and contextual feedback  
 - 🎨 Responsive design for mobile (320px–375px), tablet (768px), and desktop (1440px)  
 - 🖼 Optimized images (retina support, sprites for icons, lazy loading)  
 - 🧾 Semantic HTML5 structure and accessible UI components  
