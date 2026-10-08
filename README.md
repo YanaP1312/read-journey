@@ -1,7 +1,10 @@
-# 📚 Read Journey
+# 📚 [Read Journey](https://read-journey-green.vercel.app)
 
 A responsive web application that helps users manage their personal library, discover recommended books, and track their reading progress. The platform enables users to register, log in, add both recommended and custom books to their library, start and stop reading sessions, and monitor statistics of their reading journey.
-
+<img width="1920" height="1091" alt="РидДжор1" src="https://github.com/user-attachments/assets/16779310-914d-4614-a3de-9cb3b2f43e05" />
+<img width="1920" height="1082" alt="Рид джор3" src="https://github.com/user-attachments/assets/9e5d0fa8-789e-4a54-af4e-95a66c08f498" />
+<img width="1920" height="1081" alt="РидДжо2" src="https://github.com/user-attachments/assets/1d9fd4a1-2640-419e-9309-9e050cd4ae8c" />
+<img width="1920" height="1088" alt="РидДжор5" src="https://github.com/user-attachments/assets/a7b6acbd-75de-4913-a00a-914d57ad501e" />
 ---
 
 ## 📌 About the Project
